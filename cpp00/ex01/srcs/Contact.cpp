@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 19:49:50 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/15 04:02:53 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:39:20 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	Contact::displayInfo(void) const
 
 void	Contact::operator=(const Contact& copy)
 {
+	if (this == &copy)
+		return;
 	this->_firstName = copy._firstName;
 	this->_lastName = copy._lastName;
 	this->_nickname = copy._nickname;
