@@ -6,7 +6,7 @@ OBJDIR	=	objs
 
 # Compiler Options
 CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -MD
+CFLAGS	=	-Wall -Wextra -Werror -MD -std=c++98
 CINCS	=	-I./$(INCDIR)
 
 # Other

@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:59:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/17 11:18:43 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:16:50 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 
 	std::cout << "Addr str -------> " << &str << std::endl;
 	std::cout << "Addr stringPTR -> " << stringPTR << std::endl;
-	std::cout << "Addr stringREF -> " << stringREF << std::endl << std::endl;
+	std::cout << "Addr stringREF -> " << &stringREF << std::endl << std::endl;
 	// Correction
 	//std::cout << "Addr stringREF -> " << &stringREF << std::endl << std::endl;
 

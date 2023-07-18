@@ -1,11 +1,12 @@
 # Project Structure
-NAME	=	brainz
+NAME	=	violence
 SRCDIR	=	srcs
 INCDIR	=	incs
 OBJDIR	=	objs
 
 # Compiler Options
 CC		=	c++
+#CC		=	c++ -g
 CFLAGS	=	-Wall -Wextra -Werror -MD -std=c++98
 CINCS	=	-I./$(INCDIR)
 
@@ -14,8 +15,9 @@ RM	=	rm -rf
 
 # Files
 SRCS	:=	main.cpp \
-			Zombie.cpp \
-			zombieHorde.cpp
+			Weapon.cpp \
+			HumanA.cpp \
+			HumanB.cpp
 OBJS	:=	$(SRCS:.cpp=.o)
 SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
 OBJS	:=	$(addprefix $(OBJDIR)/, $(OBJS))
