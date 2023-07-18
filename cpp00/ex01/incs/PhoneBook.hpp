@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 17:25:03 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/15 04:21:01 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:38:18 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,18 @@
 class PhoneBook
 {
 public:
+	// Constructors
 	PhoneBook(void);
 	PhoneBook(const PhoneBook& copy);
+
+	// Destructors
 	~PhoneBook(void);
 
+	// Utils
 	void	add(void);
 	void	search(void) const;
 	void	displayContacts(void) const;
+
 private:
 	Contact	_contacts[8];
 	int		_index;

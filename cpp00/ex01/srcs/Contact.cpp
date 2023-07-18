@@ -6,15 +6,14 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 19:49:50 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/17 16:39:20 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:36:44 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+// Constructors
 Contact::Contact() {}
-Contact::~Contact() {}
-
 Contact::Contact(const Contact& copy)
 {
 	this->_firstName = copy._firstName;
@@ -24,6 +23,44 @@ Contact::Contact(const Contact& copy)
 	this->_darkestSecret = copy._darkestSecret;
 }
 
+// Destructors
+Contact::~Contact() {}
+
+// Operators
+void	Contact::operator=(const Contact& copy)
+{
+	if (this == &copy)
+		return;
+	this->_firstName = copy._firstName;
+	this->_lastName = copy._lastName;
+	this->_nickname = copy._nickname;
+	this->_phoneNumber = copy._phoneNumber;
+	this->_darkestSecret = copy._darkestSecret;
+}
+
+// Getters / Setters
+std::string	Contact::getFirstName(void) const
+{
+	return this->_firstName;
+}
+std::string	Contact::getLastName(void) const
+{
+	return this->_lastName;
+}
+std::string	Contact::getNickname(void) const
+{
+	return this->_nickname;
+}
+std::string	Contact::getPhoneNumber(void) const
+{
+	return this->_phoneNumber;
+}
+std::string	Contact::getDarkestSecret(void) const
+{
+	return this->_darkestSecret;
+}
+
+// Utils
 std::string	Contact::_promptField(std::string prompt)
 {
 	std::string	input;
@@ -40,7 +77,6 @@ std::string	Contact::_promptField(std::string prompt)
 		std::cout << "This field cannot be blank, try again." << std::endl;
 	}
 }
-
 void	Contact::promptInfo(void)
 {
 	this->_firstName = this->_promptField("First name: ");
@@ -49,7 +85,6 @@ void	Contact::promptInfo(void)
 	this->_phoneNumber = this->_promptField("Phone number: ");
 	this->_darkestSecret = this->_promptField("Darkest secret: ");
 }
-
 void	Contact::displayInfo(void) const
 {
 	std::cout << "First name: " << this->_firstName << std::endl;
@@ -57,40 +92,4 @@ void	Contact::displayInfo(void) const
 	std::cout << "Nickname: " << this->_nickname << std::endl;
 	std::cout << "Phone number: " << this->_phoneNumber << std::endl;
 	std::cout << "Darkest secret: " << this->_darkestSecret<< std::endl;
-}
-
-void	Contact::operator=(const Contact& copy)
-{
-	if (this == &copy)
-		return;
-	this->_firstName = copy._firstName;
-	this->_lastName = copy._lastName;
-	this->_nickname = copy._nickname;
-	this->_phoneNumber = copy._phoneNumber;
-	this->_darkestSecret = copy._darkestSecret;
-}
-
-std::string	Contact::getFirstName(void) const
-{
-	return this->_firstName;
-}
-
-std::string	Contact::getLastName(void) const
-{
-	return this->_lastName;
-}
-
-std::string	Contact::getNickname(void) const
-{
-	return this->_nickname;
-}
-
-std::string	Contact::getPhoneNumber(void) const
-{
-	return this->_phoneNumber;
-}
-
-std::string	Contact::getDarkestSecret(void) const
-{
-	return this->_darkestSecret;
 }

@@ -6,12 +6,13 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 17:25:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/15 04:26:24 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:40:22 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+// Constructors
 PhoneBook::PhoneBook(void)
 {
 	this->_displayBanner();
@@ -23,7 +24,6 @@ PhoneBook::PhoneBook(void)
 	this->_index = 0;
 	this->_numberContacts = 0;
 }
-
 PhoneBook::PhoneBook(const PhoneBook& copy)
 {
 	this->_index = copy._index;
@@ -33,18 +33,19 @@ PhoneBook::PhoneBook(const PhoneBook& copy)
 		this->_contacts[i] = copy._contacts[i];
 }
 
+// Destructors
 PhoneBook::~PhoneBook(void)
 {
 	this->_displayBanner();
 }
 
+// Utils
 void	PhoneBook::_displayBanner(void) const
 {
 	std::cout << "\e[1;38;2;255;0;255m------------------------" << std::endl;
 	std::cout << "| My Awesome PhoneBook |" << std::endl;
 	std::cout << "------------------------\e[0m" << std::endl;
 }
-
 void	PhoneBook::add(void)
 {
 	Contact		tmp;
@@ -82,7 +83,6 @@ void	PhoneBook::add(void)
 	if (this->_numberContacts < 8)
 		++this->_numberContacts;
 }
-
 void	PhoneBook::search(void) const
 {
 	int	index;
@@ -117,7 +117,6 @@ void	PhoneBook::search(void) const
 	std::cout << std::endl;
 	this->_contacts[index].displayInfo();
 }
-
 int	PhoneBook::_promptIndex(std::string prompt) const
 {
 	int	index;
@@ -134,7 +133,6 @@ int	PhoneBook::_promptIndex(std::string prompt) const
 		std::cout << "Not a number, try again. (-1 to cancel)" << std::endl;
 	}
 }
-
 void	PhoneBook::displayContacts(void) const
 {
 	std::cout << std::setw(10) << std::right << "Index";
