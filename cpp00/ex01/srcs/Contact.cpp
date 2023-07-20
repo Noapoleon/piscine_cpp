@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 19:49:50 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 14:00:30 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:06:48 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ std::string	Contact::getDarkestSecret(void) const
 }
 
 // Utils
-std::string	Contact::_promptField(std::string prompt)
+std::string	Contact::_promptField(std::string prompt, int digits)
 {
 	std::string	input;
 
@@ -72,18 +72,23 @@ std::string	Contact::_promptField(std::string prompt)
 		if (std::cin.eof())
 			return ("");
 		if (!input.empty())
-			return (std::cin.clear(), input);
+		{
+			if (digits && is_valid_phone(input))
+				return (std::cin.clear(), input);
+			if (!digits)
+				return (std::cin.clear(), input);
+		}
 		std::cin.clear();
-		std::cout << "This field cannot be blank, try again." << std::endl;
+		std::cout << "Invalid input, try again." << std::endl;
 	}
 }
 void	Contact::promptInfo(void)
 {
-	this->_firstName = this->_promptField("First name: ");
-	this->_lastName = this->_promptField("Last name: ");
-	this->_nickname = this->_promptField("Nickname: ");
-	this->_phoneNumber = this->_promptField("Phone number: ");
-	this->_darkestSecret = this->_promptField("Darkest secret: ");
+	this->_firstName = this->_promptField("First name: ", 0);
+	this->_lastName = this->_promptField("Last name: ", 0);
+	this->_nickname = this->_promptField("Nickname: ", 0);
+	this->_phoneNumber = this->_promptField("Phone number (10 digits exactly): ", 1);
+	this->_darkestSecret = this->_promptField("Darkest secret: ", 0);
 }
 void	Contact::displayInfo(void) const
 {

@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 19:49:49 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 13:34:54 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:03:15 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ private:
 	std::string	_phoneNumber;
 	std::string	_darkestSecret;
 
-	std::string	_promptField(std::string prompt);
+	std::string	_promptField(std::string prompt, int digits);
 };
 
 #endif

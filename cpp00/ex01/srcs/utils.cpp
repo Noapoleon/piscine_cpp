@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 02:04:51 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/15 04:24:28 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:06:15 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,16 @@ std::string	truncField(std::string str)
 	if (str.length() < 10)
 		return (str); // not sure i can do that
 	return (str.substr(0, 9) + ".");
+}
+
+int	is_valid_phone(std::string &str)
+{
+	int	len = str.length();
+
+	if (str.length() != 10)
+		return (0);
+	for (int i = 0; i < len; ++i)
+		if (!std::isdigit(str[i]))
+			return (0);
+	return (1);
 }
