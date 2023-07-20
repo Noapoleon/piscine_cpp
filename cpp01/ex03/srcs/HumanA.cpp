@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:44:28 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 18:16:01 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:11:07 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ HumanA::HumanA(const HumanA &copy) : _weapon(copy._weapon)
 {
 	this->_name = copy._name;
 }
-//HumanA::HumanA(std::string name, Weapon *weapon)
 HumanA::HumanA(std::string name, Weapon &weapon) : _weapon(weapon)
 {
 	this->_name = name;

@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 11:59:11 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 18:08:44 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:58:52 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 //int	main(void)
 //{
 //	// Weapon tests
+//	const Weapon w0 = Weapon("ritu");
 //	Weapon w1;
 //	w1.setType("bow");
 //

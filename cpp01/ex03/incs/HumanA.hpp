@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:44:43 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 19:20:45 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:04:37 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ public:
 	// Utils
 	void	attack(void);
 private:
-	HumanA(void);
+	HumanA(void); // move
 
 	std::string	_name;
 	Weapon		&_weapon;

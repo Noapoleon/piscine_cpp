@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:44:28 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 18:16:01 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:34:47 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ HumanB::HumanB(void)
 HumanB::HumanB(const HumanB &copy)
 {
 	this->_name = copy._name;
-	this->weapon = copy._weapon;
+	this->_weapon = copy._weapon;
+}
+HumanB::HumanB(std::string name)
+{
+	this->_name = name;
+	this->_weapon = NULL;
 }
 HumanB::HumanB(std::string name, Weapon *weapon)
 {
@@ -44,4 +49,8 @@ void	HumanB::attack(void)
 	if (this->_weapon)
 		std::cout << this->_name << " attacks with their "
 			<< this->_weapon->getType() << std::endl;
+}
+void	HumanB::setWeapon(const Weapon &w)
+{
+	this->_weapon = (Weapon *)&w;
 }

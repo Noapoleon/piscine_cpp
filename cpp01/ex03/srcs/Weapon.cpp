@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:01:11 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 19:16:03 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:46:14 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Weapon::Weapon(void)
 {
 	this->_type = "divine stick";
 }
-Weapon::Weapon(Weapon &copy)
+Weapon::Weapon(const Weapon &copy)
 {
 	this->_type = copy._type;
 }
@@ -43,7 +43,10 @@ void	Weapon::setType(const std::string &newType)
 }
 
 // Operators
-void	Weapon::operator=(const Weapon &copy)
+Weapon &Weapon::operator=(const Weapon &copy)
 {
+	if (this == &copy)
+		return (*this);
 	this->_type = copy._type;
+	return (*this);
 }

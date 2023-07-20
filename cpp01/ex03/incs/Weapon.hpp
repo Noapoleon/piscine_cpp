@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:01:28 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 19:20:33 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/07/20 17:47:11 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class	Weapon
 public:
 	// Constructors
 	Weapon(void);
-	Weapon(Weapon &copy);
+	Weapon(const Weapon &copy);
 	Weapon(const std::string &type);
 
 	// Destructors
@@ -32,7 +32,7 @@ public:
 	void				setType(const std::string &newType);
 
 	// Operators
-	void operator=(const Weapon &copy);
+	Weapon &operator=(const Weapon &copy);
 
 private:
 	std::string	_type;
