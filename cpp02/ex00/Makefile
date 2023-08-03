@@ -1,5 +1,5 @@
 # Project Structure
-NAME	=	fixed
+NAME	=	fixed00
 SRCDIR	=	srcs
 OBJDIR	=	objs
 INCDIR	=	incs
