@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 18:03:29 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/03 18:24:28 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/06 16:02:26 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ public:
 	Point&	operator=(const Point& copy);
 
 	// Utils
-
+	const Fixed&	getX() const;
+	const Fixed&	getY() const;
 private:
 	Fixed const	_x;
 	Fixed const	_y;

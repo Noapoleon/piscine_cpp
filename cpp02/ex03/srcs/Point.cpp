@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 18:10:11 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/03 18:27:37 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/06 16:02:19 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,14 @@ Point&	Point::operator=(const Point& copy)
 {
 	(void)copy;
 	return (*this);
+}
+
+// Utils
+const Fixed&	Point::getX() const
+{
+	return (this->_x);
+}
+const Fixed&	Point::getY() const
+{
+	return (this->_y);
 }
