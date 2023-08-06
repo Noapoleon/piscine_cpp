@@ -13,8 +13,8 @@ CINCS	=	-I./$(INCDIR)
 RM	=	rm -rf
 
 # Files
-SRCS	:=	main.cpp \
-			Fixed.cpp
+SRCS	:=	Fixed.cpp \
+			main.cpp
 OBJS	:=	$(SRCS:.cpp=.o)
 SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
 OBJS	:=	$(addprefix $(OBJDIR)/, $(OBJS))

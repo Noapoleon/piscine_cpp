@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:25:25 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/03 17:41:05 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/06 16:43:47 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,21 @@ public:
 	~Fixed(void);
 
 	// Operators
-	Fixed&					operator=(const Fixed& copy);
-	friend std::ostream&	operator<<(std::ostream& os, const Fixed& f);
-	friend bool				operator>(const Fixed& f1, const Fixed& f2);
-	friend bool				operator<(const Fixed& f1, const Fixed& f2);
-	friend bool				operator>=(const Fixed& f1, const Fixed& f2);
-	friend bool				operator<=(const Fixed& f1, const Fixed& f2);
-	friend bool				operator==(const Fixed& f1, const Fixed& f2);
-	friend bool				operator!=(const Fixed& f1, const Fixed& f2);
-	friend Fixed			operator+(const Fixed& f1, const Fixed& f2);
-	friend Fixed			operator-(const Fixed& f1, const Fixed& f2);
-	friend Fixed			operator*(const Fixed& f1, const Fixed& f2);
-	friend Fixed			operator/(const Fixed& f1, const Fixed& f2);
-	Fixed&					operator++(void);
-	Fixed					operator++(int);
-	Fixed&					operator--(void);
-	Fixed					operator--(int);
+	Fixed&	operator=(const Fixed& copy);
+	bool	operator>(const Fixed& f2) const;
+	bool	operator<(const Fixed& f2) const;
+	bool	operator>=(const Fixed& f2) const;
+	bool	operator<=(const Fixed& f2) const;
+	bool	operator==(const Fixed& f2) const;
+	bool	operator!=(const Fixed& f2) const;
+	Fixed	operator+(const Fixed& f2) const;
+	Fixed	operator-(const Fixed& f2) const;
+	Fixed	operator*(const Fixed& f2) const;
+	Fixed	operator/(const Fixed& f2) const;
+	Fixed&	operator++(void);
+	Fixed	operator++(int);
+	Fixed&	operator--(void);
+	Fixed	operator--(int);
 
 	// Utils
 	int					getRawBits(void) const;
@@ -61,5 +60,8 @@ private:
 	int					_val;
 	static int const	_frac = 8;
 };
+
+// Stream operators
+std::ostream&	operator<<(std::ostream& os, const Fixed& f);
 
 #endif

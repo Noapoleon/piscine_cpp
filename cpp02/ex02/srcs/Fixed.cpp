@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:26:42 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/03 17:45:44 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/06 16:44:25 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,60 +41,54 @@ Fixed&	Fixed::operator=(const Fixed &copy)
 	return (*this);
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed &f)
+bool	Fixed::operator>(const Fixed& f) const
 {
-	os << f.toFloat();
-	return (os);
+	return (this->_val > f._val);
 }
 
-bool	operator>(const Fixed& f1, const Fixed& f2)
+bool	Fixed::operator<(const Fixed& f) const
 {
-	return (f1._val > f2._val);
+	return (this->_val < f._val);
 }
 
-bool	operator<(const Fixed& f1, const Fixed& f2)
+bool	Fixed::operator>=(const Fixed& f) const 
 {
-	return (f1._val < f2._val);
+	return (this->_val >= f._val);
 }
 
-bool	operator>=(const Fixed& f1, const Fixed& f2)
+bool	Fixed::operator<=(const Fixed& f) const
 {
-	return (f1._val >= f2._val);
+	return (this->_val <= f._val);
 }
 
-bool	operator<=(const Fixed& f1, const Fixed& f2)
+bool	Fixed::operator==(const Fixed& f) const
 {
-	return (f1._val <= f2._val);
+	return (this->_val == f._val);
 }
 
-bool	operator==(const Fixed& f1, const Fixed& f2)
+bool	Fixed::operator!=(const Fixed& f) const
 {
-	return (f1._val == f2._val);
+	return (this->_val != f._val);
 }
 
-bool	operator!=(const Fixed& f1, const Fixed& f2)
+Fixed Fixed::operator+(const Fixed& f) const
 {
-	return (f1._val != f2._val);
+	return (this->toFloat() + f.toFloat());
 }
 
-Fixed operator+(const Fixed& f1, const Fixed& f2)
+Fixed Fixed::operator-(const Fixed& f) const
 {
-	return (f1.toFloat() + f2.toFloat());
+	return (this->toFloat() - f.toFloat());
 }
 
-Fixed operator-(const Fixed& f1, const Fixed& f2)
+Fixed Fixed::operator*(const Fixed& f) const
 {
-	return (f1.toFloat() - f2.toFloat());
+	return (this->toFloat() * f.toFloat());
 }
 
-Fixed operator*(const Fixed& f1, const Fixed& f2)
+Fixed Fixed::operator/(const Fixed& f) const
 {
-	return (f1.toFloat() * f2.toFloat());
-}
-
-Fixed operator/(const Fixed& f1, const Fixed& f2)
-{
-	return (f1.toFloat() / f2.toFloat());
+	return (this->toFloat() / f.toFloat());
 }
 
 Fixed&	Fixed::operator++(void)
@@ -173,3 +167,11 @@ const Fixed&	Fixed::max(const Fixed& f1, const Fixed& f2)
 		return (f1);
 	return (f2);
 }
+
+// Stream operators
+std::ostream& operator<<(std::ostream& os, const Fixed &f)
+{
+	os << f.toFloat();
+	return (os);
+}
+
