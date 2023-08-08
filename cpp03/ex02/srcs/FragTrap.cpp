@@ -47,6 +47,16 @@ FragTrap::~FragTrap(void)
 }
 
 // Utils
+void	FragTrap::attack(const std::string& target)
+{
+	if (this->_canDoAction("Attack") == false)
+		return ;
+	--(this->_energyPoints);
+	std::cout << this->getClassName() << " " << this->_name << " attacks "
+		<< target << ", causing " << this->_attackDamage
+		<< " points of damage with its Flakker Explosive Shotgun!" << std::endl;
+}
+
 void	FragTrap::highFiveGuys(void)
 {
 	if (this->_canDoAction("High five") == false)
