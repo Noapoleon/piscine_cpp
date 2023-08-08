@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:47 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 18:40:40 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/08 20:25:17 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@ ScavTrap::~ScavTrap(void)
 }
 
 // Utils
+void	ScavTrap::attack(const std::string& target)
+{
+	if (this->_canDoAction("Attack") == false)
+		return ;
+	--(this->_energyPoints);
+	std::cout << this->getClassName() << " " << this->_name << " attacks "
+		<< target << ", causing " << this->_attackDamage
+		<< " points of damage with his strong red claws!" << std::endl;
+}
+
 void	ScavTrap::guardGate(void)
 {
 	if (this->_canDoAction("Guarding") == false)

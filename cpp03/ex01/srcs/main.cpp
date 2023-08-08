@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:46 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 18:39:45 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/08 20:25:40 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,11 @@ int	main(void)
 	st2.guardGate();
 	st2.takeDamage(-1);
 	st2.guardGate();
+
+	ScavTrap st4("Ritu");
+	ClapTrap st5("Pon");
+
+	st4.attack("Xavier");
+	st5.attack("Niel");
 	return (0);
 }
