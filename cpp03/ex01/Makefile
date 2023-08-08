@@ -1,5 +1,5 @@
 # Project Structure
-NAME	=	ex00
+NAME	=	ex01
 SRCDIR	=	srcs
 OBJDIR	=	objs
 INCDIR	=	incs

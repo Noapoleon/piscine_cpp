@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:47 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/07 20:44:12 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:38:54 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Constructors
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "ClapTrap default constructor called" << std::endl;
+	std::cout << this->getClassName() << " default \e[34mconstructor\e[0m called" << std::endl;
 	this->_name = "DefaultName";
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
@@ -24,7 +24,7 @@ ClapTrap::ClapTrap(void)
 
 ClapTrap::ClapTrap(const ClapTrap& copy)
 {
-	std::cout << "ClapTrap copy constructor called" << std::endl;
+	std::cout << this->getClassName() << " copy \e[34mconstructor\e[0m called" << std::endl;
 	this->_name = copy._name;
 	this->_hitPoints = copy._hitPoints;
 	this->_energyPoints = copy._energyPoints;
@@ -33,7 +33,7 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
 
 ClapTrap::ClapTrap(const std::string& name)
 {
-	std::cout << "ClapTrap string constructor called" << std::endl;
+	std::cout << this->getClassName() << " string \e[34mconstructor\e[0m called" << std::endl;
 	this->_name = name;
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
@@ -43,13 +43,12 @@ ClapTrap::ClapTrap(const std::string& name)
 // Destructors
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "ClapTrap default destructor called" << std::endl;
+	std::cout << this->getClassName() << " default \e[31mdestructor\e[0m called" << std::endl;
 }
 
 // Operators
 ClapTrap&	ClapTrap::operator=(const ClapTrap& copy)
 {
-	std::cout << "ClapTrap assignment operator called" << std::endl;
 	if (this == &copy)
 		return (*this);
 	this->_name = copy._name;
@@ -62,15 +61,11 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& copy)
 // Utils
 void	ClapTrap::attack(const std::string& target)
 {
-	if (this->_energyPoints == 0 || this->_hitPoints == 0)
-	{
-		std::cout << "ClapTrap " << this->_name
-			<< " has no energy or hit points left. Attack failed." << std::endl;
+	if (this->_canDoAction("Attack") == false)
 		return ;
-	}
 	--(this->_energyPoints);
-	std::cout << "ClapTrap " << this->_name << " attacks " << target
-		<< ", causing " << this->_attackDamage << " points of damage!"
+	std::cout << this->getClassName() << " " << this->_name << " attacks "
+		<< target << ", causing " << this->_attackDamage << " points of damage!"
 		<< std::endl;
 }
 
@@ -80,26 +75,49 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		this->_hitPoints = 0;
 	else
 		this->_hitPoints -= amount;
-	std::cout << "ClapTrap " << this->_name << " took " << amount
-		<< " points of damage and now has " << this->_hitPoints
+	std::cout << this->getClassName() << " " << this->_name << " took "
+		<< amount << " points of damage and now has " << this->_hitPoints
 		<< " hit points left." << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_energyPoints == 0 || this->_hitPoints == 0)
-	{
-		std::cout << "ClapTrap " << this->_name
-			<< " has no energy or hit points left. Repair failed." << std::endl;
+	if (this->_canDoAction("Repair") == false)
 		return ;
-	}
 	--(this->_energyPoints);
 	this->_hitPoints += amount;
-	std::cout << "ClapTrap " << this->_name << " repaired itself and now has "
-		<< this->_hitPoints << " hit points left." << std::endl;
+	std::cout << this->getClassName() << " " << this->_name
+		<< " repaired itself and now has " << this->_hitPoints
+		<< " hit points left." << std::endl;
 }
 
-std::string ClapTrap::getName(void) const
+std::string	ClapTrap::getName(void) const
 {
 	return (this->_name);
+}
+
+std::string	ClapTrap::getClassName(void) const
+{
+	return ("\e[38;2;0;255;0mClapTrap\e[0m");
+}
+
+void	ClapTrap::displayInfo(void) const
+{
+	std::cout << "Name: " << this->_name;
+	std::cout << ", Hit points: " << this->_hitPoints;
+	std::cout << ", Energy points: " << this->_energyPoints;
+	std::cout << ", Attack damage: " << this->_attackDamage << std::endl;
+}
+
+// Private utils
+bool	ClapTrap::_canDoAction(const std::string& action) const
+{
+	if (this->_energyPoints == 0 || this->_hitPoints == 0)
+	{
+		std::cout << this->getClassName() << " " << this->_name
+			<< " has no energy or hit points left. " << action
+			<< " failed." << std::endl;
+		return false;
+	}
+	return true;
 }

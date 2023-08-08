@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/07 21:04:59 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:36:05 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #define SCAV_TRAP_HPP
 
 #include <iostream>
+#include "ClapTrap.hpp"
 
-class	ScavTrap
+class	ScavTrap : public ClapTrap
 {
 public:
 	// Constructors
@@ -23,17 +24,15 @@ public:
 	ScavTrap(const ScavTrap& copy);
 	ScavTrap(const std::string& name);
 
-	// Destructors
-	~ScavTrap(void);
-
 	// Operators
 	ScavTrap&	operator=(const ScavTrap& copy);
 
-private:
-	std::string		_name;
-	unsigned int	_hitPoints;
-	unsigned int	_energyPoints;
-	unsigned int	_attackDamage;
+	// Destructors
+	~ScavTrap(void);
+
+	// Utils
+	void	guardGate(void);
+	std::string getClassName(void) const;
 };
 
 # endif

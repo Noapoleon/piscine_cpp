@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/07 20:44:21 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:34:45 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,17 @@ public:
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
 	std::string	getName(void) const;
+	virtual		std::string	getClassName(void) const;
+	void		displayInfo(void) const;
 
-private:
+protected:
 	std::string		_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
+
+	// Private Utils
+	bool			_canDoAction(const std::string& action) const;
 };
 
 # endif
