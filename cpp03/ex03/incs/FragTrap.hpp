@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 20:58:34 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/09 23:23:07 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	FragTrap&	operator=(const FragTrap& copy);
 
 	// Destructors
-	~FragTrap(void);
+	virtual ~FragTrap(void);
 
 	// Utils
 	void	attack(const std::string& target);

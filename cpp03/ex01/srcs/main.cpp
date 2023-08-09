@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:46 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 20:25:40 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/09 23:17:39 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int	main(void)
 
 	st4.attack("Xavier");
 	st5.attack("Niel");
+
 	return (0);
 }

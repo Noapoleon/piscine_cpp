@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 21:33:06 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/09 23:22:35 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 	ClapTrap(const std::string& name);
 
 	// Destructors
-	~ClapTrap(void);
+	virtual ~ClapTrap(void);
 
 	// Operators
 	ClapTrap&	operator=(const ClapTrap& copy);

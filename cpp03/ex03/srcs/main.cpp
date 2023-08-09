@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:46 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 21:46:02 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/09 23:22:14 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,8 @@ int	main(void)
 	//t3.attack("Ritupon");
 	//t3.takeDamage(-1);
 	//t3.beRepaired(33);
+	
+	const ClapTrap* ct = new DiamondTrap();
+	delete ct;
 	return (0);
 }

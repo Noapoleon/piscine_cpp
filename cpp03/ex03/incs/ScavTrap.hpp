@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 20:58:34 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/09 23:23:21 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	ScavTrap&	operator=(const ScavTrap& copy);
 
 	// Destructors
-	~ScavTrap(void);
+	virtual ~ScavTrap(void);
 
 	// Utils
 	void		attack(const std::string& target);

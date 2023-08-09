@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:46 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 19:13:58 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/09 23:20:52 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	main(void)
 	t3.attack("Ritupon");
 	t3.takeDamage(-1);
 	t3.beRepaired(33);
+
 	return (0);
 }
