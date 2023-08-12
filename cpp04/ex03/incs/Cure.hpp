@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 23:05:22 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/12 21:09:31 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:10:19 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-#define ICE_HPP
+#ifndef CURE_HPP
+#define CURE_HPP
 
-#include <iostream>
-#include "AMateria.hpp"
+# include <iostream>
+# include "AMateria.hpp"
 
-class	Ice : virtual public AMateria
+class	Cure : virtual public AMateria
 {
 public:
 	// Constructors
-	Ice(void);
-	Ice(const Ice& copy);
+	Cure(void);
+	Cure(const Cure& copy);
 
 	// Destructors
-	~Ice(void);
+	~Cure(void);
 
 	// Operators
-	Ice&	operator=(const Ice& copy);
+	Cure&	operator=(const Cure& copy);
 
 	// Utils
 	AMateria*	clone(void) const;

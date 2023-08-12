@@ -6,11 +6,12 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:46:59 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/10 23:04:59 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:21:17 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 // Constructors
 AMateria::AMateria(void)
@@ -38,9 +39,7 @@ AMateria::~AMateria(void)
 // Operators
 AMateria&	AMateria::operator=(const AMateria& copy)
 {
-	if (this == &copy)
-		return (*this);
-	//this->type = copy.type;
+	(void)copy;
 	return (*this);
 }
 
@@ -50,12 +49,7 @@ std::string const & AMateria::getType(void) const // Returns the materia type
 	return (this->type);
 }
 
-//void	AMateria::use(ICharacter& target)
-void	AMateria::use(std::string target)
+void	AMateria::use(ICharacter& target)
 {
-
-	std::cout << "* cant use " <<  this->type << " on " << target
-		<< std::endl;
-	//std::cout << "* cant use " <<  this->type << " on " << target.getName()
-	//	<< std::endl;
+	std::cout << "* using abstract materia on " << target.getName() << " *" << std::endl;
 }

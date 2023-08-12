@@ -14,7 +14,10 @@ RM	=	rm -rf
 
 # Files
 SRCS	:=	main.cpp \
-			AMateria.cpp
+			AMateria.cpp \
+			Ice.cpp \
+			Cure.cpp \
+			Character.cpp
 OBJS	:=	$(SRCS:.cpp=.o)
 SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
 OBJS	:=	$(addprefix $(OBJDIR)/, $(OBJS))
