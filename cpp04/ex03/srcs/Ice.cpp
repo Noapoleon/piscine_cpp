@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 23:08:37 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/12 21:22:27 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/12 22:55:28 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,11 @@
 #include "ICharacter.hpp"
 
 // Constructors
-Ice::Ice(void) : AMateria("ice")
-{
-	std::cout << "Ice default constructor called" << std::endl;
-}
-Ice::Ice(const Ice& copy) : AMateria(copy)
-{
-	std::cout << "AMateria copy constructor called" << std::endl;
-}
+Ice::Ice(void) : AMateria("ice") {}
+Ice::Ice(const Ice& copy) : AMateria(copy) {}
 
 // Destructors
-Ice::~Ice(void)
-{
-	std::cout << "Ice default destructor called" << std::endl;
-}
+Ice::~Ice(void) {}
 
 // Operators
 Ice&	Ice::operator=(const Ice& copy)
@@ -40,6 +31,8 @@ Ice&	Ice::operator=(const Ice& copy)
 AMateria*	Ice::clone(void) const
 {
 	AMateria *tmp = new Ice();
+	if (tmp == NULL)
+		std::cout << AMATERIA_ERROR "Failed to clone " << this->getType() << "materia!" << std::endl;
 	return (tmp);
 }
 

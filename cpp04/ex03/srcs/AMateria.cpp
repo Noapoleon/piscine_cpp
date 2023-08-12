@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:46:59 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/12 21:21:17 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/12 22:11:22 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,19 @@
 #include "ICharacter.hpp"
 
 // Constructors
-AMateria::AMateria(void)
-{
-	std::cout << "AMateria default constructor called" << std::endl;
-}
+AMateria::AMateria(void) {}
 
 AMateria::AMateria(const AMateria& copy)
 {
-	std::cout << "AMateria copy constructor called" << std::endl;
 	this->type = copy.type;
 }
 AMateria::AMateria(std::string const & type)
 {
-	std::cout << "AMateria string constructor called" << std::endl;
 	this->type = type;
 }
 
 // Destructors
-AMateria::~AMateria(void)
-{
-	std::cout << "AMateria default destructor called" << std::endl;
-}
+AMateria::~AMateria(void) {}
 
 // Operators
 AMateria&	AMateria::operator=(const AMateria& copy)

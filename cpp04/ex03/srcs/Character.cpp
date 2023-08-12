@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 19:20:58 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/12 21:39:42 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/12 23:34:31 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,19 @@
 Character::Character(void)
 {
 	this->_name = "DefaultName";
-	for (int i = 0; i < CHARACTER_INV_SIZE; ++i)
-		this->_inv[i] = NULL;
-	this->_trash = NULL;
+	this->_initSlots();
 }
 
 Character::Character(const Character& copy)
 {
+	this->_initSlots();
 	*this = copy;
 }
 
 Character::Character(const std::string& name)
 {
 	this->_name = name;
-	for (int i = 0; i < CHARACTER_INV_SIZE; ++i)
-		this->_inv[i] = NULL;
-	this->_trash = NULL;
+	this->_initSlots();
 }
 
 // Destructors
@@ -72,27 +69,26 @@ void Character::equip(AMateria* m)
 
 	if (m == NULL)
 	{
-		std::cout << INV_ERROR "Invalid materia!" << std::endl;
-		return ;
+		std::cout << CHARACTER_INV_ERROR "Invalid materia!" << std::endl;
+		return;
 	}
 	for (int i = 0; i < CHARACTER_INV_SIZE; ++i)
 	{
 		if (this->_inv[i] == m)
 		{
-			std::cout << INV_ERROR "Materia already equipped!" << std::endl;
-			return ;
+			std::cout << CHARACTER_INV_ERROR "Materia already equipped!" << std::endl;
+			return;
 		}
 		if (first_empty == -1 && this->_inv[i] == NULL)
 			first_empty = i;
 	}
 	if (first_empty == -1)
 	{
-		std::cout << INV_ERROR "Inventory full! Materia sent to trash." << std::endl;
+		std::cout << CHARACTER_INV_ERROR "Inventory full! Materia sent to trash." << std::endl;
 		this->_sendTrash(m);
-		return ;
+		return;
 	}
 	this->_inv[first_empty] = m;
-	std::cout << "Equipped materia " << m->getType() << " in slot " << first_empty << "." << std::endl;
 }
 
 void Character::unequip(int idx)
@@ -132,24 +128,16 @@ void	Character::displayInfo(void) const
 void	Character::_deleteInv(void)
 {
 	for (int i = 0; i < CHARACTER_INV_SIZE; ++i)
-		if (this->_inv[i])
-		{
-			delete this->_inv[i];
-			this->_inv[i] = NULL;
-		}
-	if (this->_trash)
-	{
-		delete this->_trash;
-		this->_trash = NULL;
-	}
+		delete this->_inv[i];
+	delete this->_trash;
+	this->_initSlots();
 }
 
 void	Character::_sendTrash(AMateria *m)
 {
 	if (m == NULL)
 		return ;
-	if (this->_trash)
-		delete this->_trash;
+	delete this->_trash;
 	this->_trash = m;
 }
 
@@ -157,13 +145,20 @@ int	Character::_isBadSlot(int idx)
 {
 	if (idx < 0 || idx >= CHARACTER_INV_SIZE)
 	{
-		std::cout << INV_ERROR "Invalid inventory slot!" << std::endl;
+		std::cout << CHARACTER_INV_ERROR "Invalid inventory slot!" << std::endl;
 		return (1);
 	}
 	if (this->_inv[idx] == NULL)
 	{
-		std::cout << INV_ERROR "Inventory slot empty!" << std::endl;
+		std::cout << CHARACTER_INV_ERROR "Inventory slot empty!" << std::endl;
 		return (1);
 	}
 	return (0);
+}
+
+void	Character::_initSlots(void)
+{
+	for (int i = 0; i < CHARACTER_INV_SIZE; ++i)
+		this->_inv[i] = NULL;
+	this->_trash = NULL;
 }

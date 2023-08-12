@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 23:08:37 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/12 21:22:13 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/12 22:56:14 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,11 @@
 #include "ICharacter.hpp"
 
 // Constructors
-Cure::Cure(void) : AMateria("cure")
-{
-	std::cout << "Cure default constructor called" << std::endl;
-}
-Cure::Cure(const Cure& copy) : AMateria(copy)
-{
-	std::cout << "AMateria copy constructor called" << std::endl;
-}
+Cure::Cure(void) : AMateria("cure") {}
+Cure::Cure(const Cure& copy) : AMateria(copy) {}
 
 // Destructors
-Cure::~Cure(void)
-{
-	std::cout << "Cure default destructor called" << std::endl;
-}
+Cure::~Cure(void) {}
 
 // Operators
 Cure&	Cure::operator=(const Cure& copy)
@@ -40,6 +31,8 @@ Cure&	Cure::operator=(const Cure& copy)
 AMateria*	Cure::clone(void) const
 {
 	AMateria *tmp = new Cure();
+	if (tmp == NULL)
+		std::cout << AMATERIA_ERROR "Failed to clone " << this->getType() << "materia!" << std::endl;
 	return (tmp);
 }
 

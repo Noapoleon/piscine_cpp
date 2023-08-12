@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 22:40:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/12 21:21:08 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/12 22:54:17 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include <string>
+
+# define AMATERIA_ERROR	"\e[31;1merror AMateria:\e[0m "
 
 class ICharacter;
 
