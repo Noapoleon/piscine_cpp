@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 19:20:58 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/12 21:23:29 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:39:42 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void	Character::_sendTrash(AMateria *m)
 
 int	Character::_isBadSlot(int idx)
 {
-	if (idx >= CHARACTER_INV_SIZE)
+	if (idx < 0 || idx >= CHARACTER_INV_SIZE)
 	{
 		std::cout << INV_ERROR "Invalid inventory slot!" << std::endl;
 		return (1);
