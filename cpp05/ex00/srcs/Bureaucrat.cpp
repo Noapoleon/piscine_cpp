@@ -15,7 +15,8 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& copy)
 {
 	if (this == &copy)
 		return (*this);
-	this->_grade = copy._grade;
+	_grade = copy._grade;
+	// _name = copy._name; // name is const, there are ways to change it still with const_cast but should I?
 	return (*this);
 }
 
