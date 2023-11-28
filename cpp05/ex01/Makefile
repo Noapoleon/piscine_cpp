@@ -6,12 +6,12 @@
 #    By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 18:42:40 by nlegrand          #+#    #+#              #
-#    Updated: 2023/11/28 20:54:01 by nlegrand         ###   ########.fr        #
+#    Updated: 2023/11/28 20:39:16 by nlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Project Structure
-NAME	=	ex00
+NAME	=	ex01
 SRCDIR	=	srcs
 OBJDIR	=	objs
 INCDIR	=	incs
@@ -27,7 +27,8 @@ RM	=	rm -rf
 
 # Files
 SRCS	:=	main.cpp \
-			Bureaucrat.cpp
+			Bureaucrat.cpp \
+			Form.cpp
 OBJS	:=	$(SRCS:.cpp=.o)
 SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
 OBJS	:=	$(addprefix $(OBJDIR)/, $(OBJS))
