@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/29 14:27:35 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:00:47 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ AForm::AForm(void) :
 	_gradeSign(AForm::maxGrade),
 	_gradeExec(AForm::maxGrade)
 {
+	std::cout << "AForm constructor" << std::endl;
 	if (_gradeSign < AForm::maxGrade || _gradeExec < AForm::maxGrade)
 		throw AForm::GradeTooHighException();
 	if (_gradeSign > AForm::minGrade || _gradeExec > AForm::minGrade)
@@ -62,21 +63,13 @@ AForm& AForm::operator<<(const AForm& copy)
 
 // Getters/Setters
 std::string	AForm::getName(void) const
-{
-	return (_name);
-};
+{ return (_name); }
 bool	AForm::getSigned(void) const
-{
-	return (_signed);
-}
+{ return (_signed); }
 int		AForm::getGradeSign(void) const
-{
-	return (_gradeSign);
-}
+{ return (_gradeSign); }
 int		AForm::getGradeExec(void) const
-{
-	return (_gradeExec);
-}
+{ return (_gradeExec); }
 
 // Utils
 void	AForm::beSigned(const Bureaucrat& b)
@@ -85,9 +78,18 @@ void	AForm::beSigned(const Bureaucrat& b)
 		throw AForm::GradeTooLowException();
 	_signed = 1;
 }
+void	AForm::checkExec(const Bureaucrat& executor) const
+{
+	if (executor.getGrade() > this->getGradeExec())
+		throw AForm::GradeTooLowException();
+	if (!this->getSigned())
+		throw AForm::FormNotSignedException();
+}
 
 // Exceptions
 const char* AForm::GradeTooHighException::what() const throw()
 { return ("grade_too_high"); }
 const char* AForm::GradeTooLowException::what() const throw()
 { return ("grade_too_low"); }
+const char*	AForm::FormNotSignedException::what() const throw()
+{ return ("form_not_signed"); }

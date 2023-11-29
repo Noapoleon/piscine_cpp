@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:48:44 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/29 15:32:58 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:49:40 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,28 @@ class	PresidentialPardonForm : public AForm
 public:
 	// Constructors
 	PresidentialPardonForm(void);
-	//PresidentialPardonForm(const PresidentialPardonForm& c);
-	//PresidentialPardonForm(const std::string& target);
+	PresidentialPardonForm(const PresidentialPardonForm& c);
+	PresidentialPardonForm(const std::string& target);
 
 	// Destructors
 	~PresidentialPardonForm(void);
 
 	// Operators
+
+	// Getters/Setters
+	std::string	getTarget(void) const;
+
+	// Utils
+	void	execute(const Bureaucrat& executor) const;
+
+	// Exceptions
+	class	FormNotSignedException : public std::exception {
+		virtual const char*	what() const throw();
+	};
 	
 	// Constants
+	static const int	gradeSign = 25;
+	static const int	gradeExec = 5;
 private:
 	std::string	_target;
 };
