@@ -6,7 +6,7 @@
 #    By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 18:42:40 by nlegrand          #+#    #+#              #
-#    Updated: 2023/11/29 22:21:57 by nlegrand         ###   ########.fr        #
+#    Updated: 2023/11/30 14:26:42 by nlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS	:=	main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
 			PresidentialPardonForm.cpp \
-			RobotomyRequestForm.cpp
+			RobotomyRequestForm.cpp \
+			ShrubberyCreationForm.cpp
 OBJS	:=	$(SRCS:.cpp=.o)
 SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
 OBJS	:=	$(addprefix $(OBJDIR)/, $(OBJS))

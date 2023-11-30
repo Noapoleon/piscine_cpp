@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/29 20:00:47 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:16:46 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ void	AForm::checkExec(const Bureaucrat& executor) const
 	if (executor.getGrade() > this->getGradeExec())
 		throw AForm::GradeTooLowException();
 	if (!this->getSigned())
+	{
 		throw AForm::FormNotSignedException();
+	}
 }
 
 // Exceptions
