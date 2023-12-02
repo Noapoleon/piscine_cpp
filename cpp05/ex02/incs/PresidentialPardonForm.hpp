@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:48:44 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/30 14:57:42 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:01:35 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ public:
 	// Constants
 	static const int	gradeSign = 25;
 	static const int	gradeExec = 5;
-private:
-	std::string	_target;
 };
 
 #endif // PRESIDENTIAL_PARDON_FORM_HPP

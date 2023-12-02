@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/29 19:48:44 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:06:06 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ public:
 	static const int	maxGrade = 1;
 	static const int	minGrade = 150;
 
+protected:
+	std::string	_target;
 private:
 	const std::string	_name;
 	bool				_signed;
