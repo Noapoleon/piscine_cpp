@@ -78,15 +78,15 @@ int	main(void)
 	// ShrubberyCreationForm TESTS //
 	std::cout << "\n\n" COL_PARA "ShrubberyCreationForm TESTS:" COL_RST << std::endl;
 	std::cout << COL_TEST "ShrubberyCreationForm Test #1" COL_RST << std::endl;
-	try_form(ShrubberyCreationForm(), 146);
+	try_form(ShrubberyCreationForm("Ritupon"), 146);
 	std::cout << COL_TEST "ShrubberyCreationForm Test #2" COL_RST << std::endl;
-	try_form(ShrubberyCreationForm(), 145);
+	try_form(ShrubberyCreationForm("Ritupon"), 145);
 	std::cout << COL_TEST "ShrubberyCreationForm Test #3" COL_RST << std::endl;
-	try_form(ShrubberyCreationForm(), 138);
+	try_form(ShrubberyCreationForm("Ritupon"), 138);
 	std::cout << COL_TEST "ShrubberyCreationForm Test #4" COL_RST << std::endl;
-	try_form(ShrubberyCreationForm(), 137);
+	try_form(ShrubberyCreationForm("Ritupon"), 137);
 	std::cout << COL_TEST "ShrubberyCreationForm Test #5" COL_RST << std::endl;
-	try_form(ShrubberyCreationForm(), -1);
+	try_form(ShrubberyCreationForm("Ritupon"), -1);
 	// ---------------------------- //
 	return (0);
 }

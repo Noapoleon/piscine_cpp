@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/02 19:06:06 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:22:13 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ public:
 	bool		getSigned(void) const;
 	int			getGradeSign(void) const;
 	int			getGradeExec(void) const;
+	std::string	getTarget(void) const;
 
 	// Utils
 	void			beSigned(const Bureaucrat& b);

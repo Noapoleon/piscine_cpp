@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/30 15:16:46 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:24:49 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int		AForm::getGradeSign(void) const
 { return (_gradeSign); }
 int		AForm::getGradeExec(void) const
 { return (_gradeExec); }
+std::string	AForm::getTarget(void) const
+{ return (_target); }
 
 // Utils
 void	AForm::beSigned(const Bureaucrat& b)

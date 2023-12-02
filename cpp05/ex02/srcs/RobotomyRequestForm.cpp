@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:48:22 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/29 22:19:41 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/02 23:00:35 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,28 @@ RobotomyRequestForm::RobotomyRequestForm(void) :
 	AForm("DefaultPresidentialPardonName",
 		false,
 		RobotomyRequestForm::gradeSign,
-		RobotomyRequestForm::gradeExec),
-	_target("DefaultTarget") {}
+		RobotomyRequestForm::gradeExec)
+{
+	_target = "DefaultTarget";
+}
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& c) :
-	AForm(c),
-	_target(c._target) {}
+	AForm(c)
+{
+	_target = c._target;
+}
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) :
 	AForm("DefaultPresidentialPardonName",
 		false,
 		RobotomyRequestForm::gradeSign,
-		RobotomyRequestForm::gradeExec),
-	_target(target) {}
+		RobotomyRequestForm::gradeExec)
+{
+	_target = target;
+}
 
 // Destructors
 RobotomyRequestForm::~RobotomyRequestForm(void) {};
 
 // Getters/Setters
-std::string	RobotomyRequestForm::getTarget(void) const
-{ return (_target); }
 
 // Utils
 void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
