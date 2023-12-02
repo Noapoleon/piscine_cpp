@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 04:59:44 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/18 13:44:54 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:58:58 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@
 #include "Account.hpp"
 
 // Constructors
-Account::Account(void) {};
-Account::Account( int initial_deposit )
+Account::Account(void) :
+	_accountIndex(Account::_nbAccounts++),
+	_amount(0),
+	_nbDeposits(0),
+	_nbWithdrawals(0) {}
+Account::Account( int initial_deposit ) :
+	_accountIndex(Account::_nbAccounts++),
+	_amount(initial_deposit),
+	_nbDeposits(0), // pas sur
+	_nbWithdrawals(0)
 {
-	this->_accountIndex = Account::_nbAccounts;
-	this->_amount = initial_deposit;
-
-	++Account::_nbAccounts;
 	Account::_totalAmount += initial_deposit;
-
 	Account::_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex;
 	std::cout << ";amount:" << initial_deposit;
@@ -104,7 +107,7 @@ void	Account::displayStatus( void ) const
 	std::cout << "index:" << this->_accountIndex;
 	std::cout << ";amount:" << this->_amount;
 	std::cout << ";deposits:" << this->_nbDeposits;
-	std::cout << ";withdrawls:" << this->_nbWithdrawals << std::endl;
+	std::cout << ";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 void	Account::displayAccountsInfos( void )
 {

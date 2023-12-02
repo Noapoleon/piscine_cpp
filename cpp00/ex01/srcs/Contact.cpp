@@ -16,11 +16,7 @@
 Contact::Contact() {}
 Contact::Contact(const Contact& copy)
 {
-	this->_firstName = copy._firstName;
-	this->_lastName = copy._lastName;
-	this->_nickname = copy._nickname;
-	this->_phoneNumber = copy._phoneNumber;
-	this->_darkestSecret = copy._darkestSecret;
+	*this = copy;
 }
 
 // Destructors

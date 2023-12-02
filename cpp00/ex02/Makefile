@@ -6,7 +6,7 @@ INCDIR	=	incs
 
 # Compiler Options
 CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MD
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -MD -g
 CINCS	=	-I./$(INCDIR)
 
 # Other
