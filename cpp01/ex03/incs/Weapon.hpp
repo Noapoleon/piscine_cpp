@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:01:28 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/20 17:47:11 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:31:41 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ public:
 	~Weapon(void);
 
 	// Getters / Setters
-	const std::string	&getType() const;
+	const std::string&	getType() const;
 	void				setType(const std::string &newType);
 
 	// Operators
-	Weapon &operator=(const Weapon &copy);
+	Weapon& operator=(const Weapon &copy);
 
 private:
 	std::string	_type;

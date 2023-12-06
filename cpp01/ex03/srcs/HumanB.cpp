@@ -6,51 +6,41 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:44:28 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/20 18:34:47 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:24:43 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
 // Constructors
-HumanB::HumanB(void)
-{
-	this->_weapon = NULL;
-}
-HumanB::HumanB(const HumanB &copy)
-{
-	this->_name = copy._name;
-	this->_weapon = copy._weapon;
-}
-HumanB::HumanB(std::string name)
-{
-	this->_name = name;
-	this->_weapon = NULL;
-}
-HumanB::HumanB(std::string name, Weapon *weapon)
-{
-	this->_name = name;
-	this->_weapon = weapon;
-}
+HumanB::HumanB(const HumanB &copy) :
+	_name(copy._name),
+	_weapon(copy._weapon) {}
+HumanB::HumanB(const std::string& name) :
+	_name(name),
+	_weapon(NULL) {}
 
 // Destructors
 HumanB::~HumanB(void) {}
 
 // Operators
-void	HumanB::operator=(const HumanB &copy)
+HumanB&	HumanB::operator=(const HumanB &copy)
 {
-	this->_name = copy._name;
-	this->_weapon = copy._weapon;
+	if (this == &copy)
+		return (*this);
+	_name = copy._name;
+	_weapon = copy._weapon; // not a deep copy but should be fine for this exercise
+	return (*this);
 }
 
 // Utils
 void	HumanB::attack(void)
 {
-	if (this->_weapon)
-		std::cout << this->_name << " attacks with their "
-			<< this->_weapon->getType() << std::endl;
+	if (_weapon)
+		std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
+	else
+		std::cout << _name << " holds no weapon and failed to attack" << std::endl;
 }
-void	HumanB::setWeapon(const Weapon &w)
-{
-	this->_weapon = (Weapon *)&w;
-}
+void	HumanB::setWeapon(Weapon& w)
+{ _weapon = &w; }
+//{ _weapon = static_cast<Weapon *>(&w); }

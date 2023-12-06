@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:44:43 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/20 18:22:55 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:25:18 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@ class HumanB
 {
 public:
 	// Constructors
-	HumanB(void);
-	HumanB(const HumanB &copy);
-	HumanB(std::string name);
-	HumanB(std::string name, Weapon *weapon);
+	HumanB(const HumanB& copy);
+	HumanB(const std::string& name);
 
 	// Destructors
 	~HumanB(void);
 
 	// Operators
-	void	operator=(const HumanB &copy);
+	HumanB& operator=(const HumanB &copy);
 
 	// Utils
 	void	attack(void);
-	void	setWeapon(const Weapon &w);
+	void	setWeapon(Weapon& w);
 private:
+	HumanB(void);
+
 	std::string	_name;
-	Weapon		*_weapon;
+	Weapon*		_weapon;
 };
 
 #endif
