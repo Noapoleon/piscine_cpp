@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:36:42 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/21 00:59:59 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:17:33 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,26 @@
 #include <unistd.h>
 #include <errno.h>
 
+// Some would argue this is C-style file manipulation
+// But it's more portable than what is available in c++98
+//static int	is_valid_file(char *path)
+//{
+//	struct stat	buffer;
+//
+//	if (stat(path, &buffer) == 0)
+//		return (!(buffer.st_mode & S_IFDIR));
+//	return (0);
+//}
+
 static int	is_valid_file(char *path)
 {
-	struct stat	buffer;
+	std::ifstream	ifs;
 
-	if (stat(path, &buffer) == 0)
-		return (!(buffer.st_mode & S_IFDIR));
-	return (0);
+	ifs.open(path, std::ifstream::in);
+	ifs.seekg(0, std::ios::end);
+	if (ifs.good())
+		return (ifs.close(), 1);
+	return (ifs.close(), 0);
 }
 
 static int	push_substitute(std::ifstream &ifs, std::ofstream &ofs,
