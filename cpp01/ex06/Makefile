@@ -1,5 +1,5 @@
 # Project Structure
-NAME	=	harlFilter
+NAME	=	HarlFilter
 SRCDIR	=	srcs
 OBJDIR	=	objs
 INCDIR	=	incs
