@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 15:49:28 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/21 17:45:12 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:59:22 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int	main(int ac, char **av)
 		harl.complain("WARNING");
 		harl.complain("ERROR");
 	}
+	harl.complain("lalala\n"); // wont print anything
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 16:00:31 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/07/21 17:53:33 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:58:05 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void	Harl::complain(std::string level) const
 		&Harl::_info, &Harl::_warning, &Harl::_error};
 	
 	for (int i = 0; i < 4; ++i)
-	{
 		if (level == levels[i])
 			return ((this->*methods[i])());
-	}
 }
 
 void	Harl::_debug(void) const
