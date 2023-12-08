@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:26:42 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/03 13:34:00 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/08 23:02:23 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ Fixed::Fixed(const Fixed &copy)
 	std::cout << "Copy constructor called" << std::endl;
 	*this = copy;
 }
-Fixed::Fixed(int const val)
+Fixed::Fixed(const int val)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_val = val << this->_frac;
+	_val = val << _frac;
 }
-Fixed::Fixed(float const val)
+Fixed::Fixed(const float val)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_val = static_cast<int>(roundf(val * (1 << this->_frac)));
+	_val = static_cast<int>(roundf(val * (1 << _frac)));
 }
 
 // Destructors
@@ -44,25 +44,25 @@ void	Fixed::operator=(const Fixed &copy)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &copy)
-		this->_val = copy.getRawBits();
+		_val = copy.getRawBits();
 }
 
 // Utils
 int	Fixed::getRawBits(void) const
 {
-	return (this->_val);
+	return (_val);
 }
 void	Fixed::setRawBits(int const raw)
 {
-	this->_val = raw;
+	_val = raw;
 }
 int		Fixed::toInt(void) const
 {
-	return (this->_val >> this->_frac);
+	return (_val >> _frac);
 }
 float	Fixed::toFloat(void) const
 {
-	return (static_cast<float>(this->_val) / (1 << this->_frac));
+	return (static_cast<float>(_val) / (1 << _frac));
 }
 
 // Stream operators

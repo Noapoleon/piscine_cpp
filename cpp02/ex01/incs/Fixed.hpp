@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:25:25 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/02 18:15:54 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/08 22:19:32 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ public:
 	// Constructors
 	Fixed(void);
 	Fixed(const Fixed &copy);
-	Fixed(int const val);
-	Fixed(float const val);
+	Fixed(const int val);
+	Fixed(const float val);
 
 	// Destructors
 	~Fixed(void);
