@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/02 22:24:49 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/08 23:51:10 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ AForm::AForm(const std::string& name, bool sign, int gradeSign, int gradeExec) :
 AForm::~AForm(void) {}
 
 // Operators
-AForm& AForm::operator<<(const AForm& copy)
+AForm& AForm::operator<<(const AForm& copy) // WHAT THE FUCK IS THIS??? FIX IT DUMBASS
 {
 	if (this == &copy)
 		return (*this);
