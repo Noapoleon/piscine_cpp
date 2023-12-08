@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:56:38 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/07 12:02:33 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/08 19:43:06 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ScalarConverter::convert(const std::string& format)
 	// IMPORTANT: Display overflows
 	scalar.type  = getScalarType(format);
 	if (scalar.type == SC_INVALID) // remove later
-		return ((void)(std::cout << "The fuck you did?" << std::endl));
+		return ((void)(std::cout << "Unknown conversion." << std::endl));
 	convs[scalar.type](scalar, format);
 	displayScalar(scalar);
 }
