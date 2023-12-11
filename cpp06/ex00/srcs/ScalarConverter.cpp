@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:56:38 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/08 19:43:06 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:29:49 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static t_scalarType	getScalarType(const std::string& format)
 static void	convChar(t_scalar& sc, const std::string& format)
 {
 	sc.c = format[0];
-	sc.i = static_cast<int>(sc.c); // dynamic cast later or something?
-	sc.f = static_cast<float>(sc.c); // dynamic cast later or something?
-	sc.d = static_cast<double>(sc.c); // dynamic cast later or something?
+	sc.i = static_cast<int>(sc.c);
+	sc.f = static_cast<float>(sc.c);
+	sc.d = static_cast<double>(sc.c);
 	sc.possible[0] = true;
 	sc.possible[1] = true;
 	sc.possible[2] = true;
@@ -61,7 +61,7 @@ static void	displayScalar(const t_scalar& sc)
 
 	// print double
 	if (sc.possible[SC_DOUBLE])
-		std::cout << "double: " << sc.d << std::endl;
+		std::cout << std::setw(100) << std::right << "double: " << sc.d << std::endl;
 	else
 		std::cout << "double: impossible" << std::endl; // maybe this is nan? idk
 }
