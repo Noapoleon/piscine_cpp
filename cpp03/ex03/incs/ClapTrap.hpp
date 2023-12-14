@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/09 23:22:35 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:38:19 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ public:
 	ClapTrap&	operator=(const ClapTrap& copy);
 
 	// Utils
-	void		attack(const std::string& target);
-	void		takeDamage(unsigned int amount);
-	void		beRepaired(unsigned int amount);
-	std::string	getName(void) const;
-	virtual		std::string	getClassName(void) const;
-	void		displayInfo(void) const;
+	void				attack(const std::string& target);
+	void				takeDamage(unsigned int amount);
+	void				beRepaired(unsigned int amount);
+	virtual std::string	getName(void) const; // virtual so it gets right name??
+	int					getHitPoints(void) const;
+	int					getEnergyPoints(void) const;
+	int					getAttackDamage(void) const;
+	virtual std::string	getClassName(void) const;
+	void				displayInfo(void) const;
 
 protected:
 	std::string		_name;
@@ -46,5 +49,8 @@ protected:
 	// Private Utils
 	bool			_canDoAction(const std::string& action) const;
 };
+
+// Stream Operators
+//std::ostream&	operator<<(std::ostream& os, const DiamondTrap& d);
 
 # endif

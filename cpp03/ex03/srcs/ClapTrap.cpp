@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:47 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 20:31:46 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:38:19 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,20 @@ void	ClapTrap::beRepaired(unsigned int amount)
 }
 
 std::string	ClapTrap::getName(void) const
-{
-	return (this->_name);
-}
+{ return (this->_name); }
+int	ClapTrap::getHitPoints(void) const
+{ return (_hitPoints); }
+int	ClapTrap::getEnergyPoints(void) const
+{ return (_energyPoints); }
+int	ClapTrap::getAttackDamage(void) const
+{ return (_attackDamage); }
+
+// Stream Operators
+//std::ostream&	operator<<(std::ostream& os, const ClapTrap& c)
+//{
+//	os << c.getClassName() << c.getName() << " info: ";
+//	return (os);
+//}
 
 std::string	ClapTrap::getClassName(void) const
 {

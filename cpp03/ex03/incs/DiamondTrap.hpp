@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 21:44:16 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:36:55 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,13 @@ public:
 	~DiamondTrap(void);
 
 	// Utils
-	void		attack(const std::string& target);
-	void	whoAmI(void);
-	std::string getClassName(void) const;
+	void				attack(const std::string& target);
+	void				whoAmI(void);
+	std::string			getClassName(void) const;
+	virtual std::string	getName(void) const; // virtual??
 
 private:
 	std::string	_name;
-	int			FragTrap::_hitPoints;
-	int			ScavTrap::_energyPoints;
-	int			FragTrap::_attackDamage;
 };
 
 # endif

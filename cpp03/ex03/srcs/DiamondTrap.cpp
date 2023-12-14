@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:47 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 21:28:55 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:30:09 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ DiamondTrap::DiamondTrap(const std::string& name) : ScavTrap(name), FragTrap(nam
 	std::cout << this->getClassName() << " string \e[34mconstructor\e[0m called" << std::endl;
 	this->_name = name;
 	this->ClapTrap::_name = this->_name + "_clap_name";
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
+	// SET THINGS PROPERLY
+	std::cout << "diamond name -> " << _name << std::endl;
+	std::cout << "scav name -> " << ScavTrap::_name << std::endl;
+	std::cout << "frag name -> " << FragTrap::_name << std::endl;
+	std::cout << "clap name -> " << ClapTrap::_name << std::endl;
 }
 
 // Operators
@@ -69,3 +71,5 @@ std::string DiamondTrap::getClassName(void) const
 {
 	return ("\e[38;2;100;180;100mDiamondTrap\e[0m");
 }
+std::string	DiamondTrap::getName(void) const
+{ return (_name); }

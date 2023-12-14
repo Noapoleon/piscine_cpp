@@ -66,6 +66,8 @@ void	FragTrap::highFiveGuys(void)
 		<< " says High Five Guys!" << std::endl;
 }
 
+std::string	FragTrap::getName(void) const
+{ return (_name); }
 std::string FragTrap::getClassName(void) const
 {
 	return ("\e[38;2;75;180;0mFragTrap\e[0m");

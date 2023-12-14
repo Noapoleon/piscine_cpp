@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/09 23:23:07 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:46:56 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ public:
 	virtual ~FragTrap(void);
 
 	// Utils
-	void	attack(const std::string& target);
-	void	highFiveGuys(void);
-	std::string getClassName(void) const;
+	void				attack(const std::string& target);
+	void				highFiveGuys(void);
+	virtual std::string	getName(void) const; // virtual so it gets right name??
+	std::string			getClassName(void) const;
 };
 
 # endif

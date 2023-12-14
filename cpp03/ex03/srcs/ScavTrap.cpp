@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:47 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/08 20:25:17 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:46:41 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	ScavTrap::guardGate(void)
 		<< std::endl;
 }
 
+std::string	ScavTrap::getName(void) const
+{ return (_name); }
 std::string ScavTrap::getClassName(void) const
 {
 	return ("\e[38;2;0;180;75mScavTrap\e[0m");
