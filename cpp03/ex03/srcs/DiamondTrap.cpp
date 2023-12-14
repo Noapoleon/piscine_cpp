@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:47 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/14 09:30:09 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:00:26 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap()
 {
 	std::cout << this->getClassName() << " default \e[34mconstructor\e[0m called" << std::endl;
-	this->_name = this->ClapTrap::_name;
-	this->ClapTrap::_name = this->_name + "_clap_name";
+	_name = this->ClapTrap::_name;
+	ClapTrap::_name = this->_name + "_clap_name";
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 30;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
@@ -32,16 +35,15 @@ DiamondTrap::DiamondTrap(const std::string& name) : ScavTrap(name), FragTrap(nam
 	std::cout << this->getClassName() << " string \e[34mconstructor\e[0m called" << std::endl;
 	this->_name = name;
 	this->ClapTrap::_name = this->_name + "_clap_name";
-	// SET THINGS PROPERLY
-	std::cout << "diamond name -> " << _name << std::endl;
-	std::cout << "scav name -> " << ScavTrap::_name << std::endl;
-	std::cout << "frag name -> " << FragTrap::_name << std::endl;
-	std::cout << "clap name -> " << ClapTrap::_name << std::endl;
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 30;
 }
 
 // Operators
 DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& copy)
 {
+	_name = copy._name;
 	ClapTrap::operator=(copy);
 	return (*this);
 }

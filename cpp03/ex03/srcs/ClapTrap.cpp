@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:47 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/14 09:38:19 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:57:20 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ClapTrap::attack(const std::string& target)
 	if (this->_canDoAction("Attack") == false)
 		return ;
 	--(this->_energyPoints);
-	std::cout << this->getClassName() << " " << this->_name << " attacks "
+	std::cout << this->getClassName() << " " << getName() << " attacks "
 		<< target << ", causing " << this->_attackDamage
 		<< " points of damage with its flimsy yellow claws!" << std::endl;
 }
@@ -75,7 +75,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		this->_hitPoints = 0;
 	else
 		this->_hitPoints -= amount;
-	std::cout << this->getClassName() << " " << this->_name << " took "
+	std::cout << this->getClassName() << " " << getName() << " took "
 		<< amount << " points of damage and now has " << this->_hitPoints
 		<< " hit points left." << std::endl;
 }
@@ -86,7 +86,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	--(this->_energyPoints);
 	this->_hitPoints += amount;
-	std::cout << this->getClassName() << " " << this->_name
+	std::cout << this->getClassName() << " " << getName()
 		<< " repaired itself and now has " << this->_hitPoints
 		<< " hit points left." << std::endl;
 }
@@ -114,7 +114,7 @@ std::string	ClapTrap::getClassName(void) const
 
 void	ClapTrap::displayInfo(void) const
 {
-	std::cout << "Name: " << this->_name;
+	std::cout << "Name: " << getName();
 	std::cout << ", Hit points: " << this->_hitPoints;
 	std::cout << ", Energy points: " << this->_energyPoints;
 	std::cout << ", Attack damage: " << this->_attackDamage << std::endl;
@@ -125,7 +125,7 @@ bool	ClapTrap::_canDoAction(const std::string& action) const
 {
 	if (this->_energyPoints == 0 || this->_hitPoints == 0)
 	{
-		std::cout << this->getClassName() << " " << this->_name
+		std::cout << this->getClassName() << " " << getName()
 			<< " has no energy or hit points left. " << action
 			<< " failed." << std::endl;
 		return false;

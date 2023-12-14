@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/14 09:39:45 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:04:00 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ public:
 	// Utils
 	void				attack(const std::string& target);
 	void				guardGate(void);
-	virtual std::string	getName(void) const; // virtual so it gets right name??
 	std::string			getClassName(void) const;
 };
 

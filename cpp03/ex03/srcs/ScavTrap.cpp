@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:47 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/14 09:46:41 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:55:32 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ScavTrap::attack(const std::string& target)
 	if (this->_canDoAction("Attack") == false)
 		return ;
 	--(this->_energyPoints);
-	std::cout << this->getClassName() << " " << this->_name << " attacks "
+	std::cout << this->getClassName() << " " << getName() << " attacks "
 		<< target << ", causing " << this->_attackDamage
 		<< " points of damage with his strong red claws!" << std::endl;
 }
@@ -63,13 +63,11 @@ void	ScavTrap::guardGate(void)
 	if (this->_canDoAction("Guarding") == false)
 		return ;
 	--(this->_energyPoints);
-	std::cout << this->getClassName() << " " << this->_name
+	std::cout << this->getClassName() << " " << getName()
 		<< " is guarding the gate."
 		<< std::endl;
 }
 
-std::string	ScavTrap::getName(void) const
-{ return (_name); }
 std::string ScavTrap::getClassName(void) const
 {
 	return ("\e[38;2;0;180;75mScavTrap\e[0m");

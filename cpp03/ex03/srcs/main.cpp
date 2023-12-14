@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:46 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/14 09:37:43 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:00:59 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	main(void)
 	//FragTrap	t3("Javier");
 
 	DiamondTrap t4("Roberto");
+	std::cout << std::endl;
+	std::cout << std::endl;
+	t4.displayInfo();
+	std::cout << std::endl;
+	std::cout << std::endl;
 	//DiamondTrap t5(t4);
 	//DiamondTrap t6;
 	t4.attack("Ritupon Baishya");
@@ -44,7 +49,7 @@ int	main(void)
 
 	std::cout << std::endl;
 	std::cout << std::endl;
-	//std::cout << static_cast<ClapTrap>(t4) << std::endl;
+	t4.displayInfo();
 	std::cout << std::endl;
 	std::cout << std::endl;
 
