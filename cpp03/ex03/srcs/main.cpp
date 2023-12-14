@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:46 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/14 13:00:59 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:21:43 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,48 +18,43 @@
 
 int	main(void)
 {
-	//ClapTrap	t1("Pedro");
-	//ScavTrap	t2("Miguel");
-	//FragTrap	t3("Javier");
-
 	DiamondTrap t4("Roberto");
-	std::cout << std::endl;
-	std::cout << std::endl;
-	t4.displayInfo();
-	std::cout << std::endl;
-	std::cout << std::endl;
-	//DiamondTrap t5(t4);
-	//DiamondTrap t6;
+	DiamondTrap t5(t4);
+	DiamondTrap t6;
 	t4.attack("Ritupon Baishya");
 	t4.whoAmI();
-	//t5.attack("Ritupon Baishya");
-	//t5.whoAmI();
-	//t6.attack("Ritupon Baishya");
-	//t6.whoAmI();
-
-	std::cout << std::endl;
-	t4.guardGate();
-	t4.highFiveGuys();
-	t4.takeDamage(500);
-	t4.guardGate();
-	t4.highFiveGuys();
-	//t4 = t6;
-	t4.guardGate();
-	t4.highFiveGuys();
+	t5.attack("Ritupon Baishya");
+	t5.whoAmI();
+	t6.attack("Ritupon Baishya");
+	t6.whoAmI();
 
 	std::cout << std::endl;
 	std::cout << std::endl;
 	t4.displayInfo();
+	t5.displayInfo();
+	t6.displayInfo();
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	//t1.attack("Ritupon");
-	//t2.attack("Ritupon");
-	//t3.attack("Ritupon");
-	//t3.takeDamage(-1);
-	//t3.beRepaired(33);
+	t4.guardGate();
+	t4.highFiveGuys();
+	t4.takeDamage(99);
+	t4.beRepaired(20);
+	t4.guardGate();
+	t4.highFiveGuys();
+	t4.guardGate();
+	t4.highFiveGuys();
+
+	std::cout << std::endl;
+	t4.displayInfo();
+	t5.displayInfo();
+	t6 = t4;
+	t6.displayInfo();
+	std::cout << std::endl;
+	std::cout << std::endl;
 	
-	//const ClapTrap* ct = new DiamondTrap();
-	//delete ct;
+	ClapTrap* ct = new DiamondTrap();
+	ct->attack("Bonjouj");
+	delete ct;
 	return (0);
 }
