@@ -6,42 +6,19 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:56:38 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/16 17:53:10 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:49:12 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-//static int	ft_isprint(char c)
-//{ return (c >= ' ' && c <= 126); }
-//
-//static t_scalarType	getScalarType(const std::string& format)
-//{
-//	if (format.length() == 1)
-//		return (SC_CHAR);
-//	else if (match_int(format.c_str()))
-//		return (SC_FLOAT);
-//	else if (match_float(format.c_str()))
-//		return SC_FLOAT;
-//	else if (match_double(format.c_str()))
-//	return (SC_INVALID);
-//}
-//
-//static void	convChar(t_scalar& sc, const std::string& format)
-//{
-//	sc.c = format[0];
-//	sc.i = static_cast<int>(sc.c);
-//	sc.f = static_cast<float>(sc.c);
-//	sc.d = static_cast<double>(sc.c);
-//	sc.possible[0] = true;
-//	sc.possible[1] = true;
-//	sc.possible[2] = true;
-//	sc.possible[3] = true;
-//}
-
 static void	displayScalar(const t_scalar& sc)
 {
-	// print char
+	float			uselessff;
+	double			uselessf;
+	std::streamsize	defaultPrecision = std::cout.precision();
+
+	// char
 	if (sc.possible[SC_CHAR] && isprint(sc.c))
 		std::cout << "char: '" << sc.c << "'" << std::endl;
 	else if (sc.possible[SC_CHAR])
@@ -49,36 +26,89 @@ static void	displayScalar(const t_scalar& sc)
 	else
 		std::cout << "char: impossible" << std::endl;
 
-	// print int
+	// int
 	if (sc.possible[SC_INT])
 		std::cout << "int: " << sc.i << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
 
-	// print float
+	static_cast<void>(uselessff);
+	static_cast<void>(uselessf);
+	// float
+	std::cout << std::fixed;
+	if (!isnan(sc.f) && !isinf(sc.f) && modff(sc.f, &uselessff) == 0) // will crash probably
+		std::cout << std::setprecision(1);
 	if (sc.possible[SC_FLOAT])
-		std::cout << "float: " << sc.f << std::endl;
+		std::cout << "float: " << sc.f << "f" << std::endl;
 	else
 		std::cout << "float: impossible" << std::endl; // maybe this is nanf? idk
 
-	// print double
+	// double // CHANGE FORMATTING, NO SCIENTIFIC NOTATION
+	if (!isnan(sc.d) && !isinf(sc.d) && modf(sc.d, &uselessf) == 0) // will crash probably
+		std::cout << std::setprecision(1);
+	else
+		std::cout << std::setprecision(static_cast<int>(defaultPrecision));
 	if (sc.possible[SC_DOUBLE])
-		std::cout << std::setw(100) << std::right << "double: " << sc.d << std::endl; // remove setw
+		std::cout << "double: " << sc.d << std::endl; // remove setw
 	else
 		std::cout << "double: impossible" << std::endl; // maybe this is nan? idk
 }
 
 static bool	isValidFormat(const std::string& f)
 {
-	if (f == "inf" || f == "-inf" || f == "inff" || f == "-inff")
+	if (f == "+inf" || f == "-inf"
+			|| f == "+inff" || f == "-inff"
+			|| f == "nan" || f == "nanf")
+		return (true);
 	int	i = 0;
-	while (f[i])
+	if (f[i] == '-' || f[i] == '+')
+		++i;
+	while (f[i] && isdigit(f[i]))
+		++i;
+	if (f[i] == '.')
+		++i;
+	while (f[i] && isdigit(f[i]))
+		++i;
+	if (f[i] == '\0' || (f[i] == 'f' && f[i + 1] == '\0'))
+		return (true);
+	return (false);
+
+}
+
+static void	convertFormat(t_scalar& scalar, const std::string& format)
+{
+	double	x = strtod(format.c_str(), NULL);
+
+	// double
+	if (errno)
+	{
+		scalar.possible[SC_DOUBLE] = false;
+		errno = 0;
+	}
+	scalar.d = x;
+	
+	// char
+	if (x < 0.0 || x > 127.0 || isinf(x) || isnan(x)) // NAN and inf?  
+		scalar.possible[SC_CHAR] = false;
+	scalar.c = static_cast<char>(x);
+
+	// int
+	if (x < static_cast<double>(INT_MIN) || x > static_cast<double>(INT_MAX)
+			|| isinf(x) || isnan(x))
+		scalar.possible[SC_INT] = false; // WHAT ABOUT nan and inf here???
+	scalar.i = static_cast<int>(x);
+
+	// float
+	if (x < -HUGE_VALF || x > HUGE_VALF || scalar.possible[SC_DOUBLE] == false)
+		scalar.possible[SC_FLOAT] = false;
+	scalar.f = static_cast<float>(x);
+	// IMPORTANT: Display overflows
 }
 
 // Utils
 void	ScalarConverter::convert(const std::string& format)
 {
-	t_scalar		scalar;
+	t_scalar	scalar;
 
 	scalar.possible[0] = true; // remove
 	scalar.possible[1] = true; // remove
@@ -91,7 +121,12 @@ void	ScalarConverter::convert(const std::string& format)
 		scalar.f = static_cast<float>(scalar.c);
 		scalar.d = static_cast<double>(scalar.c);
 	}
+	else if (isValidFormat(format))
+		convertFormat(scalar, format);
 	else
-		(void)scalar; // convert things
+	{
+		std::cout << "Error: Unknown scalar" << std::endl;
+		return;
+	}
 	displayScalar(scalar); // PRECISION FOR DOUBLES IS FUCKED
 }

@@ -6,30 +6,24 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:39:57 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/11 20:17:56 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/17 13:59:17 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <climits>
+#include <cerrno>
 #include "ScalarConverter.hpp"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	// ScalarConverter sc1; // Won't compile
-	//long	a = 2147483647l * 234234;
-	//int		b = a;
-	//float	c = 42.0f;
-	//double	d = 2147483647;
-
-	//std::cout << "long ---> " << a << std::endl;
-	//std::cout << "int ----> " << b << std::endl;
-	//std::cout << "float --> " << c << std::endl;
-	//std::cout << "double -> " << d << std::endl;
-
-	//std::cout << "double to int -> " << static_cast<int>(b) << std::endl;
-
-	ScalarConverter::convert("a");
+	if (ac != 2)
+	{
+		std::cout << "Wrong arguments, fool!~" << std::endl;
+		return (1);
+	}
+	errno = 0;
+	ScalarConverter::convert(std::string(av[1]));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:57:10 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/14 15:32:33 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:24:58 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include <string>
 #include <iomanip>
 #include <cstdlib>
+#include <cerrno>
+#include <climits>
+#include <limits>
+#include <cmath>
 
 
 typedef enum e_scalarType
