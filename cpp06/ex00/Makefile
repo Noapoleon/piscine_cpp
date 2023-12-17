@@ -6,7 +6,7 @@
 #    By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 18:42:40 by nlegrand          #+#    #+#              #
-#    Updated: 2023/12/05 15:10:03 by nlegrand         ###   ########.fr        #
+#    Updated: 2023/12/16 16:11:03 by nlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ OBJDIR	=	objs
 INCDIR	=	incs
 
 # Compiler Options
-CC		=	c++
+CC		=	g++
 #CFLAGS	=	-Wall -Wextra -Werror -MD -std=c++98
-CFLAGS	=	-Wall -Wextra -Werror -MD -std=c++98 -g
+CFLAGS	=	-Wall -Wextra -Werror -Wconversion -MD -std=c++98 -g
 CINCS	=	-I./$(INCDIR)
 
 # Other

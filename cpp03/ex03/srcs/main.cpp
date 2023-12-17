@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:46 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/14 14:21:43 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:12:29 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << std::endl;
 
+	t4.attack("Ritupon Baishya");
 	t4.guardGate();
 	t4.highFiveGuys();
 	t4.takeDamage(99);
