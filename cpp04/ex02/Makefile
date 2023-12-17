@@ -1,5 +1,5 @@
 # Project Structure
-NAME	=	ex02
+NAME	=	ex01
 SRCDIR	=	srcs
 OBJDIR	=	objs
 INCDIR	=	incs
@@ -14,7 +14,7 @@ RM	=	rm -rf
 
 # Files
 SRCS	:=	main.cpp \
-			Animal.cpp \
+			AAnimal.cpp \
 			Cat.cpp \
 			Dog.cpp \
 			WrongAnimal.cpp \

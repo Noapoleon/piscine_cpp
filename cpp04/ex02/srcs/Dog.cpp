@@ -6,32 +6,32 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:55:45 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/10 21:58:57 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:40:54 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
 // Constructors
-Dog::Dog(void) : Animal()
+Dog::Dog(void) : AAnimal()
 {
 	std::cout << "\e[38;2;70;180;0mDog\e[0m default \e[34mconstructor\e[0m called" << std::endl;
 	this->type = "Dog";
 	this->brain = new Brain();
 }
 
-Dog::Dog(const Dog& copy) : Animal(copy)
+Dog::Dog(const Dog& copy) : AAnimal(copy)
 {
 	std::cout << "\e[38;2;70;180;0mDog\e[0m copy \e[34mconstructor\e[0m called" << std::endl;
-	this->type = copy.type;
 	this->brain = new Brain();
-	*(this->brain) = *(copy.brain);
+	*this = copy;
 }
 
 // Destructors
 Dog::~Dog(void)
 {
-	delete this->brain;
+	if (this->brain)
+		delete this->brain;
 	std::cout << "\e[38;2;70;180;0mDog\e[0m default \e[31mdestructor\e[0m called" << std::endl;
 }
 
@@ -40,7 +40,9 @@ Dog&	Dog::operator=(const Dog& copy)
 {
 	if (this == &copy)
 		return (*this);
-	Animal::operator=(copy);
+	AAnimal::operator=(copy);
+	if (this->brain && copy.brain)
+		*(this->brain) = *(copy.brain);
 	return (*this);
 }
 

@@ -6,32 +6,32 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:55:45 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/08/10 21:58:59 by nlegrand         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:40:41 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 // Constructors
-Cat::Cat(void) : Animal()
+Cat::Cat(void) : AAnimal()
 {
 	std::cout << "\e[38;2;0;180;70mCat\e[0m default \e[34mconstructor\e[0m called" << std::endl;
 	this->type = "Cat";
 	this->brain = new Brain();
 }
 
-Cat::Cat(const Cat& copy) : Animal(copy)
+Cat::Cat(const Cat& copy) : AAnimal(copy)
 {
 	std::cout << "\e[38;2;0;180;70mCat\e[0m copy \e[34mconstructor\e[0m called" << std::endl;
-	this->type = copy.type;
 	this->brain = new Brain();
-	*(this->brain) = *(copy.brain);
+	*this = copy;
 }
 
 // Destructors
 Cat::~Cat(void)
 {
-	delete this->brain;
+	if (this->brain)
+		delete this->brain;
 	std::cout << "\e[38;2;0;180;70mCat\e[0m default \e[31mdestructor\e[0m called" << std::endl;
 }
 
@@ -40,8 +40,9 @@ Cat&	Cat::operator=(const Cat& copy)
 {
 	if (this == &copy)
 		return (*this);
-	Animal::operator=(copy);
-	*(this->brain) = *(copy.brain);
+	AAnimal::operator=(copy);
+	if (this->brain && copy.brain)
+		*(this->brain) = *(copy.brain);
 	return (*this);
 }
 
