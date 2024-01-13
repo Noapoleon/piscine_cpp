@@ -6,12 +6,12 @@
 #    By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 18:42:40 by nlegrand          #+#    #+#              #
-#    Updated: 2024/01/13 18:19:51 by nlegrand         ###   ########.fr        #
+#    Updated: 2024/01/13 18:19:31 by nlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Project Structure
-NAME	=	ex01
+NAME	=	ex02
 SRCDIR	=	srcs
 OBJDIR	=	objs
 INCDIR	=	incs
