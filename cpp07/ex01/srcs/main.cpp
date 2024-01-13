@@ -6,36 +6,77 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 08:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/10 15:48:43 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/13 17:57:15 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include "utils.hpp"
 #include "iter.hpp"
 
-void	truc(int& x)
+// function pointers
+template < typename T >
+void	plusTwo(T& x)
 {
 	x += 2;
 }
-
-void	show(int& x)
+void	timesTwo(int& x)
 {
-	std::cout << x << " ";
+	x *= 2;
+}
+void	rot13(std::string& str)
+{
+	int	size = str.size();
+
+	for (int i = 0; i < size; ++i)
+	{
+		if (islower(str[i]))
+		{
+			if (str[i] + 13 > 'z')
+				str[i] = 'a' + (13 - ('z' - str[i]) - 1);
+			else
+				str[i] += 13;
+		}
+		if (isupper(str[i]))
+		{
+			if (str[i] + 13 > 'Z')
+				str[i] = 'A' + (13 - ('Z' - str[i]) - 1);
+			else
+				str[i] += 13;
+		}
+	}
 }
 
+#include <stdio.h>
 int main( void )
 {
-	int	arr1[10];
+	// Arrays
+	int			arr1[5] = {1, 2, 3, 4, 5};
+	std::string	arr2[6] = {"bonjour", "coucou", "salut", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "la-la la"};
+	float		arr3[3] = {42.0f, 69.0f, 1337.0f};
 
-	std::cout << "Before: ";
-	iter(arr1, 10, show);
-	std::cout << std::endl;
+	// int tests
+	test(arr1, 5, plusTwo<int>);
+	test(arr1, 5, plusTwo<int>);
+	test(arr1, 5, timesTwo);
 
-	iter(arr1, 10, truc);
+	// string tests
+	test(arr2, 6, rot13);
+	test(arr2, 6, rot13);
 
-	std::cout << "After: ";
-	iter(arr1, 10, show);
-	std::cout << std::endl;
+	// float tests
+	std::ostream oldState(NULL);
+	oldState.copyfmt(std::cout);
+	test(arr3, 3, plusTwo<float>);
+	std::cout.precision(1);
+	std::cout << std::fixed;
+	test(arr3, 3, plusTwo<float>);
+	std::cout.copyfmt(oldState);
+	test(arr3, 3, plusTwo<float>);
+
+	// other
+	test(arr1, 5, timesTwo);
+	test(arr2, 6, rot13);
 	return (0);
 }
