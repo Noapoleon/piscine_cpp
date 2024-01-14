@@ -6,7 +6,7 @@
 #    By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 18:42:40 by nlegrand          #+#    #+#              #
-#    Updated: 2024/01/13 18:19:31 by nlegrand         ###   ########.fr        #
+#    Updated: 2024/01/14 18:46:37 by nlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,17 @@ INCDIR	=	incs
 
 # Compiler Options
 CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -MD -std=c++98 -g
+CFLAGS	=	-MD -std=c++98 -g
+#CFLAGS	=	-Wall -Wextra -Werror -MD -std=c++98 -g
 CINCS	=	-I./$(INCDIR)
 
 # Other
 RM	=	rm -rf
 
 # Files
-SRCS	:=	main.cpp
-OBJS	:=	$(SRCS:.cpp=.o)
+SRCS	:=	main.cpp \
+			Array.tpp
+OBJS	:=	$(SRCS:.[ct]pp=.o)
 SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
 OBJS	:=	$(addprefix $(OBJDIR)/, $(OBJS))
 
@@ -35,7 +37,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.[ct]pp
 	@if [ ! -d $(dir $@) ]; then \
 		mkdir -p $(dir $@); \
 	fi
