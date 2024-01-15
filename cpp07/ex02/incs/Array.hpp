@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:50:55 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/14 18:50:56 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/16 00:01:44 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,26 @@ class Array
 {
 public:
 	// Constructors
-	Array(void) : _arr(NULL), _size(0) {}
+	Array(void);
 	Array(const Array& copy);
 	Array(unsigned int n);
 
 	// Destructors
-	~Array(void)
-	{
-		if (_arr)
-			delete[] _arr;
-	}
+	~Array(void);
 
 	// Operators
-	Array&	operator=(const Array& copy);
+	Array&		operator=(const Array& copy);
+	T&			operator[](const unsigned int i);
+	const T&	operator[](const unsigned int i) const;
 
 	// Utils
-	unsigned int	size(void);
+	unsigned int	size(void) const;
 
 private:
 	T*				_arr;
 	unsigned int	_size;
 };
+
+#include "Array.tpp"
 
 #endif // ARRAY_HPP
