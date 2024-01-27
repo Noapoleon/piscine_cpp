@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/02 22:22:13 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 18:12:11 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,58 @@ public:
 		virtual const char*	what() const throw();
 	};
 
-	// Constants
-	static const int	maxGrade = 1;
-	static const int	minGrade = 150;
-
-protected:
-	std::string	_target;
 private:
 	const std::string	_name;
 	bool				_signed;
 	const int			_gradeSign;
 	const int			_gradeExec;
 };
+class AForm
+{
+public:
+	// Constructors
+	AForm(void);
+	AForm(const AForm& copy);
+	AForm(const std::string& name, int gradeSign, int gradeExec);
+
+	// Destructors
+	~AForm(void);
+
+	// Operators
+	AForm&	operator==(const AForm& copy);
+
+	// Getters/Setters
+	std::string	getName(void) const;
+	bool		getSigned(void) const;
+	int			getGradeSign(void) const;
+	int			getGradeExec(void) const;
+
+	// Utils
+	void	beSigned(const Bureaucrat& b);
+	void	validateGrade(const int g) const;
+
+	// Exceptions
+	class	GradeTooHighException : public std::exception {
+		virtual const char*	what() const throw();
+	};
+	class	GradeTooLowException : public std::exception {
+		virtual const char*	what() const throw();
+	};
+
+	// Constants
+	static const int	maxGrade = 1;
+	static const int	minGrade = 150;
+
+protected:
+	std::string	_target; // CHECK WHY THIS IS PROTECTED AGAIN
+private:
+	const std::string	_name;
+	bool				_signed;
+	const int			_gradeSign;
+	const int			_gradeExec;
+};
+
+// Stream Operators
+std::ostream&	operator<<(std::ostream& os, const AForm& f);
 
 #endif // AFORM_HPP
