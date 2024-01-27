@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:59:24 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/27 16:51:50 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:46:53 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ public:
 	// Utils
 	void	incrementGrade(void);
 	void	decrementGrade(void);
-	void	validateGrade(int g);
+	void	validateGrade(const int g) const;
 	void	signForm(Form& f) const;
 
 

@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/27 17:28:18 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:52:15 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	Form::beSigned(const Bureaucrat& b)
 		throw Form::GradeTooLowException();
 	_signed = 1;
 }
-void	Form::validateGrade(int g)
+void	Form::validateGrade(const int g) const
 {
 	if (g < maxGrade)
 		throw GradeTooHighException();

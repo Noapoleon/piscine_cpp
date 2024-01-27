@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/27 17:28:09 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:46:42 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ public:
 
 	// Utils
 	void	beSigned(const Bureaucrat& b);
-	void	validateGrade(int g);
+	void	validateGrade(const int g) const;
 
 	// Exceptions
 	class	GradeTooHighException : public std::exception {

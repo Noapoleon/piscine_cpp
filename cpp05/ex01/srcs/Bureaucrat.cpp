@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:59:22 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/27 16:53:42 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:52:43 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	Bureaucrat::decrementGrade(void)
 	validateGrade(_grade + 1);
 	++_grade;
 }
-void	Bureaucrat::validateGrade(int g)
+void	Bureaucrat::validateGrade(const int g) const
 {
 	if (g < maxGrade)
 		throw GradeTooHighException();
@@ -64,7 +64,7 @@ void	Bureaucrat::signForm(Form& f) const
 	try {
 		f.beSigned(*this);
 	} catch (std::exception& e) {
-		std::cout << _name << " coudln't sign " << f.getName()
+		std::cout << _name << " couldn't sign " << f.getName()
 			<< " because " << e.what() << std::endl;
 	}
 	std::cout << _name << " signed " << f.getName() << std::endl;
