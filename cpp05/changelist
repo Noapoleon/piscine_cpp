@@ -1,0 +1,19 @@
+EX00
+- static lowest grade used for default constructor
+- removed namespace operator for stuff like GradeTooHighException and maxGrade
+- removed grade check in default constructor
+- added validateGrate() of type void that throws an exception if grade is too
+  high or too low
+- validated grade before and after incrementation in case of overflow (stupid
+  test case but whatever)
+
+IMPORTANT:
+- static const int maxGrade was set to 0 instead of 1
+
+
+
+EX01
+
+IMPORTANT:
+- replaced operator<< by operator==
+- added operator<< 

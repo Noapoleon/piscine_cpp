@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/27 18:12:11 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 18:59:45 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,49 +18,8 @@
 
 class Bureaucrat;
 
-class AForm
-{
-public:
-	// Constructors
-	AForm(void);
-	AForm(const AForm& copy);
-	AForm(const std::string& name, bool sign, int gradeSign, int gradeExec);
 
-	// Destructors
-	~AForm(void);
 
-	// Operators
-	AForm&	operator<<(const AForm& copy);
-
-	// Getters/Setters
-	std::string	getName(void) const;
-	bool		getSigned(void) const;
-	int			getGradeSign(void) const;
-	int			getGradeExec(void) const;
-	std::string	getTarget(void) const;
-
-	// Utils
-	void			beSigned(const Bureaucrat& b);
-	virtual	void	execute(const Bureaucrat& executor) const = 0;
-	void			checkExec(const Bureaucrat& executor) const;
-
-	// Exceptions
-	class	GradeTooHighException : public std::exception {
-		virtual const char*	what() const throw();
-	};
-	class	GradeTooLowException : public std::exception {
-		virtual const char*	what() const throw();
-	};
-	class	FormNotSignedException : public std::exception {
-		virtual const char*	what() const throw();
-	};
-
-private:
-	const std::string	_name;
-	bool				_signed;
-	const int			_gradeSign;
-	const int			_gradeExec;
-};
 class AForm
 {
 public:
@@ -76,20 +35,25 @@ public:
 	AForm&	operator==(const AForm& copy);
 
 	// Getters/Setters
+	std::string	getTarget(void) const;
 	std::string	getName(void) const;
 	bool		getSigned(void) const;
 	int			getGradeSign(void) const;
 	int			getGradeExec(void) const;
 
 	// Utils
-	void	beSigned(const Bureaucrat& b);
-	void	validateGrade(const int g) const;
+	void			beSigned(const Bureaucrat& b);
+	void			validateGrade(const int g) const;
+	virtual	void	execute(const Bureaucrat& executor) const = 0; // dont make it virtual, make virtual subfunction
 
 	// Exceptions
 	class	GradeTooHighException : public std::exception {
 		virtual const char*	what() const throw();
 	};
 	class	GradeTooLowException : public std::exception {
+		virtual const char*	what() const throw();
+	};
+	class	FormNotSignedException : public std::exception {
 		virtual const char*	what() const throw();
 	};
 

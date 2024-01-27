@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/27 17:52:15 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 18:18:40 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 Form::Form(void) :
 	_name("DefaultName"),
 	_signed(false),
-	_gradeSign(Form::maxGrade),
-	_gradeExec(Form::maxGrade)
+	_gradeSign(maxGrade),
+	_gradeExec(maxGrade)
 {
 	validateGrade(_gradeSign);
 	validateGrade(_gradeExec);
 }
 Form::Form(const Form& copy) :
 	_name(copy._name),
-	_signed(copy._signed),
+	_signed(false),
 	_gradeSign(copy._gradeSign),
 	_gradeExec(copy._gradeExec)
 {
