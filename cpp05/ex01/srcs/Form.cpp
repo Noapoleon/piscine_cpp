@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/08 23:50:27 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:28:18 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@
 // Constructors
 Form::Form(void) :
 	_name("DefaultName"),
-	_signed(0),
+	_signed(false),
 	_gradeSign(Form::maxGrade),
 	_gradeExec(Form::maxGrade)
 {
-	if (_gradeSign < Form::maxGrade || _gradeExec < Form::maxGrade)
-		throw Form::GradeTooHighException();
-	if (_gradeSign > Form::minGrade || _gradeExec > Form::minGrade)
-		throw Form::GradeTooLowException();
+	validateGrade(_gradeSign);
+	validateGrade(_gradeExec);
 }
 Form::Form(const Form& copy) :
 	_name(copy._name),
@@ -31,28 +29,24 @@ Form::Form(const Form& copy) :
 	_gradeSign(copy._gradeSign),
 	_gradeExec(copy._gradeExec)
 {
-	if (_gradeSign < Form::maxGrade || _gradeExec < Form::maxGrade)
-		throw Form::GradeTooHighException();
-	if (_gradeSign > Form::minGrade || _gradeExec > Form::minGrade)
-		throw Form::GradeTooLowException();
+	validateGrade(_gradeSign);
+	validateGrade(_gradeExec);
 }
-Form::Form(const std::string& name, bool sign, int gradeSign, int gradeExec) :
+Form::Form(const std::string& name, int gradeSign, int gradeExec) :
 	_name(name),
-	_signed(sign),
+	_signed(false),
 	_gradeSign(gradeSign),
 	_gradeExec(gradeExec)
 {
-	if (_gradeSign < Form::maxGrade || _gradeExec < Form::maxGrade)
-		throw Form::GradeTooHighException();
-	if (_gradeSign > Form::minGrade || _gradeExec > Form::minGrade)
-		throw Form::GradeTooLowException();
+	validateGrade(_gradeSign);
+	validateGrade(_gradeExec);
 }
 
 // Destructors
 Form::~Form(void) {}
 
 // Operators
-Form& Form::operator<<(const Form& copy)
+Form& Form::operator==(const Form& copy)
 {
 	if (this == &copy)
 		return (*this);
@@ -62,21 +56,13 @@ Form& Form::operator<<(const Form& copy)
 
 // Getters/Setters
 std::string	Form::getName(void) const
-{
-	return (_name);
-};
+{ return (_name); };
 bool	Form::getSigned(void) const
-{
-	return (_signed);
-}
+{ return (_signed); }
 int		Form::getGradeSign(void) const
-{
-	return (_gradeSign);
-}
+{ return (_gradeSign); }
 int		Form::getGradeExec(void) const
-{
-	return (_gradeExec);
-}
+{ return (_gradeExec); }
 
 // Utils
 void	Form::beSigned(const Bureaucrat& b)
@@ -85,9 +71,27 @@ void	Form::beSigned(const Bureaucrat& b)
 		throw Form::GradeTooLowException();
 	_signed = 1;
 }
+void	Form::validateGrade(int g)
+{
+	if (g < maxGrade)
+		throw GradeTooHighException();
+	if (g > minGrade)
+		throw GradeTooLowException();
+}
 
 // Exceptions
 const char* Form::GradeTooHighException::what() const throw()
 { return ("grade_too_high"); }
 const char* Form::GradeTooLowException::what() const throw()
 { return ("grade_too_low"); }
+
+// Stream Operators
+std::ostream&	operator<<(std::ostream& os, const Form& f)
+{
+	os << f.getName() << ", form signing grade " << f.getGradeSign()
+		<< " and executing grade " << f.getGradeExec() << " is ";
+	if (f.getSigned() == false)
+		os << "not ";
+	os << "signed";
+	return (os);
+}

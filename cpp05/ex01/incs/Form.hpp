@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/08 23:50:27 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 17:28:09 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ public:
 	// Constructors
 	Form(void);
 	Form(const Form& copy);
-	Form(const std::string& name, bool sign, int gradeSign, int gradeExec);
+	Form(const std::string& name, int gradeSign, int gradeExec);
 
 	// Destructors
 	~Form(void);
 
 	// Operators
-	Form&	operator<<(const Form& copy);
+	Form&	operator==(const Form& copy);
 
 	// Getters/Setters
 	std::string	getName(void) const;
@@ -40,6 +40,7 @@ public:
 
 	// Utils
 	void	beSigned(const Bureaucrat& b);
+	void	validateGrade(int g);
 
 	// Exceptions
 	class	GradeTooHighException : public std::exception {
@@ -59,5 +60,8 @@ private:
 	const int			_gradeSign;
 	const int			_gradeExec;
 };
+
+// Stream Operators
+std::ostream&	operator<<(std::ostream& os, const Form& f);
 
 #endif // FORM_HPP

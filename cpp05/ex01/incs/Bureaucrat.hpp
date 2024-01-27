@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:59:24 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/28 20:34:39 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:51:50 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ public:
 	// Utils
 	void	incrementGrade(void);
 	void	decrementGrade(void);
+	void	validateGrade(int g);
 	void	signForm(Form& f) const;
+
 
 	// Exceptions
 	class GradeTooHighException : public std::exception
@@ -54,7 +56,7 @@ public:
 	};
 	
 	// Constants
-	static const int	maxGrade = 0;
+	static const int	maxGrade = 1;
 	static const int	minGrade = 150;
 
 private:
