@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:48:44 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/02 22:22:13 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/29 22:08:19 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,19 @@ public:
 	~PresidentialPardonForm(void);
 
 	// Operators
-
-	// Getters/Setters
+	PresidentialPardonForm&	operator=(const PresidentialPardonForm& c);
 
 	// Utils
-	void	execute(const Bureaucrat& executor) const;
+	virtual void	execAction(void) const;
 
 	// Constants
-	static const int	gradeSign = 25;
-	static const int	gradeExec = 5;
+	static const std::string	defaultName;
+	static const int			defaultGradeSign = 25;
+	static const int			defaultGradeExec = 5;
+	static const std::string	defaultTarget;
+
+private:
+	const std::string	_target;
 };
 
 #endif // PRESIDENTIAL_PARDON_FORM_HPP

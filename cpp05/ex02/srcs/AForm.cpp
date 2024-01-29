@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/27 18:54:59 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/29 22:51:43 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ AForm::AForm(const std::string& name, int gradeSign, int gradeExec) :
 AForm::~AForm(void) {}
 
 // Operators
-AForm& AForm::operator==(const AForm& copy)
+AForm& AForm::operator=(const AForm& copy)
 {
 	if (this == &copy)
 		return (*this);
@@ -63,24 +63,15 @@ int		AForm::getGradeSign(void) const
 { return (_gradeSign); }
 int		AForm::getGradeExec(void) const
 { return (_gradeExec); }
-std::string	AForm::getTarget(void) const
-{ return (_target); }
+//std::string	AForm::getTarget(void) const
+//{ return (_target); }
 
 // Utils
 void	AForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() > _gradeSign)
-		throw AForm::GradeTooLowException();
+		throw GradeTooLowException();
 	_signed = 1;
-}
-void	AForm::checkExec(const Bureaucrat& executor) const
-{
-	if (executor.getGrade() > this->getGradeExec())
-		throw AForm::GradeTooLowException();
-	if (!this->getSigned())
-	{
-		throw AForm::FormNotSignedException();
-	}
 }
 void	AForm::validateGrade(const int g) const
 {
@@ -88,6 +79,14 @@ void	AForm::validateGrade(const int g) const
 		throw GradeTooHighException();
 	if (g > minGrade)
 		throw GradeTooLowException();
+}
+void	AForm::execute(const Bureaucrat& executor) const
+{
+	if (executor.getGrade() > _gradeExec)
+		throw GradeTooLowException();
+	if (this->getSigned() == false)
+		throw FormNotSignedException();
+	this->execAction();
 }
 
 // Exceptions
