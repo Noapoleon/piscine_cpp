@@ -6,52 +6,62 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:48:22 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/02 23:00:35 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/30 02:21:02 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
+// Constants
+const std::string	RobotomyRequestForm::defaultName = "RobotomyForm";
+const std::string	RobotomyRequestForm::defaultTarget = "TargetName";
+
 // Constructors
 RobotomyRequestForm::RobotomyRequestForm(void) :
-	AForm("DefaultPresidentialPardonName",
-		false,
-		RobotomyRequestForm::gradeSign,
-		RobotomyRequestForm::gradeExec)
-{
-	_target = "DefaultTarget";
-}
+	AForm(defaultName, defaultGradeSign, defaultGradeExec),
+	_target(defaultTarget) {}
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& c) :
-	AForm(c)
-{
-	_target = c._target;
-}
+	AForm(c),
+	_target(defaultTarget) {}
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) :
-	AForm("DefaultPresidentialPardonName",
-		false,
-		RobotomyRequestForm::gradeSign,
-		RobotomyRequestForm::gradeExec)
-{
-	_target = target;
-}
+	AForm(defaultName, defaultGradeSign, defaultGradeExec),
+	_target(target) {}
 
 // Destructors
 RobotomyRequestForm::~RobotomyRequestForm(void) {};
 
-// Getters/Setters
+// Operators
+RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& c)
+{
+	if (this == &c)
+		return (*this);
+	AForm::operator=(c);
+	return (*this);
+}
 
 // Utils
-void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
+std::string	RobotomyRequestForm::getTarget(void) const
+{ return (_target); }
+void	RobotomyRequestForm::execAction(void) const
 {
 	int	random = rand() % 2;
 
-	this->checkExec(executor);
 	std::cout << "bbbbbzzzzzrrrrrrrtt...!! sscchrrrrrrtt..!! !@#$%&(T*Y#@" << std::endl;
 	if (random)
 		std::cout << _target << " has been robotomized! beep, boop!" << std::endl;
 	else
 		std::cout << "Failed to robotomize " << _target
-			<< "... Please proceed with the corpse disposal protocol."
-			<< std::endl;
+			<< "... proceeding with the corpse disposal protocol." << std::endl;
 }
 
+// Stream Operators
+std::ostream&	operator<<(std::ostream& os, const RobotomyRequestForm& f)
+{
+	os << f.getName() << ", form targeting " << f.getTarget()
+		<< " with signing grade " << f.getGradeSign()
+		<< " and executing grade " << f.getGradeExec() << " is ";
+	if (f.getSigned() == false)
+		os << "not ";
+	os << "signed";
+	return (os);
+}

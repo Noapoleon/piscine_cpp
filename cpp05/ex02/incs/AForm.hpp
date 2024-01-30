@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/29 22:28:09 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/30 02:11:18 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ public:
 	AForm&	operator=(const AForm& copy);
 
 	// Getters/Setters
-//	std::string	getTarget(void) const;
 	std::string	getName(void) const;
 	bool		getSigned(void) const;
 	int			getGradeSign(void) const;

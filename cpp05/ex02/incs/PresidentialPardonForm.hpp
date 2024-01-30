@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:48:44 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/29 22:08:19 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/30 02:11:41 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ public:
 	PresidentialPardonForm&	operator=(const PresidentialPardonForm& c);
 
 	// Utils
+	std::string		getTarget(void) const;
 	virtual void	execAction(void) const;
 
 	// Constants
@@ -44,5 +45,8 @@ public:
 private:
 	const std::string	_target;
 };
+
+// Stream Operators
+std::ostream&	operator<<(std::ostream& os, const PresidentialPardonForm& f);
 
 #endif // PRESIDENTIAL_PARDON_FORM_HPP

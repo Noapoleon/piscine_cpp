@@ -6,42 +6,43 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:48:22 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/02 23:04:51 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/30 02:34:35 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
+// Constants
+const std::string	ShrubberyCreationForm::defaultName = "ShrubberyForm";
+const std::string	ShrubberyCreationForm::defaultTarget = "TargetName";
+
 // Constructors
 ShrubberyCreationForm::ShrubberyCreationForm(void) :
-	AForm("DefaultPresidentialPardonName",
-		false,
-		ShrubberyCreationForm::gradeSign,
-		ShrubberyCreationForm::gradeExec)
-{
-	_target = "DefaultTarget";
-}
+	AForm(defaultName, defaultGradeSign, defaultGradeExec),
+	_target(defaultTarget) {}
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& c) :
-	AForm(c)
-{
-	_target = c._target;
-}
+	AForm(c),
+	_target(defaultTarget) {}
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) :
-	AForm("DefaultPresidentialPardonName",
-		false,
-		ShrubberyCreationForm::gradeSign,
-		ShrubberyCreationForm::gradeExec)
-{
-	_target = target;
-}
+	AForm(defaultName, defaultGradeSign, defaultGradeExec),
+	_target(target) {}
 
 // Destructors
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {};
 
-// Getters/Setters
+// Operators
+ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& c)
+{
+	if (this == &c)
+		return (*this);
+	AForm::operator=(c);
+	return (*this);
+}
 
 // Utils
-void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
+std::string	ShrubberyCreationForm::getTarget(void) const
+{ return (_target); }
+void	ShrubberyCreationForm::execAction(void) const
 {
 	static const std::string	tree =
 "          &&& &&  & &&\n\
@@ -60,7 +61,6 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 
 	std::ofstream	fout;
 	std::string	file_name = this->getTarget() + "_shrubbery";
-	this->checkExec(executor);
 	try {
 		fout.open(file_name.c_str());
 		fout << tree << std::endl;
@@ -72,3 +72,14 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 	}
 }
 
+// Stream Operators
+std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& f)
+{
+	os << f.getName() << ", form targeting " << f.getTarget()
+		<< " with signing grade " << f.getGradeSign()
+		<< " and executing grade " << f.getGradeExec() << " is ";
+	if (f.getSigned() == false)
+		os << "not ";
+	os << "signed";
+	return (os);
+}

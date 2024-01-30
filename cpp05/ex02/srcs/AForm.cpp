@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/29 22:51:43 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/30 02:08:55 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ int		AForm::getGradeSign(void) const
 { return (_gradeSign); }
 int		AForm::getGradeExec(void) const
 { return (_gradeExec); }
-//std::string	AForm::getTarget(void) const
-//{ return (_target); }
 
 // Utils
 void	AForm::beSigned(const Bureaucrat& b)
@@ -100,7 +98,7 @@ const char*	AForm::FormNotSignedException::what() const throw()
 // Stream Operators
 std::ostream&	operator<<(std::ostream& os, const AForm& f)
 {
-	os << f.getName() << ", form signing grade " << f.getGradeSign()
+	os << f.getName() << ", form with signing grade " << f.getGradeSign()
 		<< " and executing grade " << f.getGradeExec() << " is ";
 	if (f.getSigned() == false)
 		os << "not ";
