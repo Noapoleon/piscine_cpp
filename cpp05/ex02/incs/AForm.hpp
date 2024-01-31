@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/30 02:11:18 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/31 08:11:48 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	AForm(const std::string& name, int gradeSign, int gradeExec);
 
 	// Destructors
-	~AForm(void);
+	virtual ~AForm(void);
 
 	// Operators
 	AForm&	operator=(const AForm& copy);

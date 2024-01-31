@@ -61,5 +61,10 @@ int	main(void)
 	testing(RobotomyRequestForm("Lalalala"));
 	std::cout << std::endl;
 	testing(PresidentialPardonForm("Noapoleon"));
+
+	std::cout << "\nLeaks test with pointers and virtual destructor:" << std::endl;
+	AForm*	ptr = new RobotomyRequestForm("Vesa");
+	delete ptr;
+
 	return (0);
 }
