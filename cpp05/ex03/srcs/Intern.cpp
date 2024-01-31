@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 23:43:49 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/03 01:41:44 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/31 08:55:09 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ AForm*	Intern::makeForm(const std::string& type, const std::string& target) cons
 		if (type == types[i])
 		{
 			tmp = makeFunctions[i](target);
-			std::cout << "Intern creates " << type << std::endl;
 			return (tmp);
 		}
 	throw Intern::InvalidFormName();

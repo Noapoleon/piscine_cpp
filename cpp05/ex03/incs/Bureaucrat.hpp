@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:59:24 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/30 15:18:17 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/29 23:03:04 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,25 @@ public:
 	// Utils
 	void	incrementGrade(void);
 	void	decrementGrade(void);
+	void	validateGrade(const int g) const;
 	void	signForm(AForm& f) const;
-	void	executeForm(const AForm& form);
+	void	executeForm(const AForm& f) const;
+
 
 	// Exceptions
-	class	GradeTooHighException : public std::exception {
-		virtual const char*	what() const throw();
+	class GradeTooHighException : public std::exception
+	{
+	public:
+		virtual const char* what() const throw();
 	};
-	class	GradeTooLowException : public std::exception {
-		virtual const char*	what() const throw();
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		virtual const char* what() const throw();
 	};
-
+	
 	// Constants
-	static const int	maxGrade = 0;
+	static const int	maxGrade = 1;
 	static const int	minGrade = 150;
 
 private:

@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:47:20 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/08 23:51:13 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/31 08:13:27 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,26 @@ public:
 	// Constructors
 	AForm(void);
 	AForm(const AForm& copy);
-	AForm(const std::string& name, bool sign, int gradeSign, int gradeExec);
+	AForm(const std::string& name, int gradeSign, int gradeExec);
 
 	// Destructors
 	virtual ~AForm(void);
 
 	// Operators
-	AForm&	operator<<(const AForm& copy); // WHAT THE FUCK IS THIS??? FIX IT DUMBASS
+	AForm&	operator=(const AForm& copy);
 
 	// Getters/Setters
 	std::string	getName(void) const;
 	bool		getSigned(void) const;
 	int			getGradeSign(void) const;
 	int			getGradeExec(void) const;
-	std::string	getTarget(void) const;
 
 	// Utils
 	void			beSigned(const Bureaucrat& b);
-	virtual	void	execute(const Bureaucrat& executor) const = 0;
-	void			checkExec(const Bureaucrat& executor) const;
+	void			validateGrade(const int g) const;
+	void			execute(const Bureaucrat& executor) const;
+	virtual void	execAction(void) const = 0;
+
 
 	// Exceptions
 	class	GradeTooHighException : public std::exception {
@@ -59,13 +60,16 @@ public:
 	static const int	maxGrade = 1;
 	static const int	minGrade = 150;
 
-protected:
-	std::string	_target;
+//protected:
+//	std::string	_target; // CHECK WHY THIS IS PROTECTED AGAIN
 private:
 	const std::string	_name;
 	bool				_signed;
 	const int			_gradeSign;
 	const int			_gradeExec;
 };
+
+// Stream Operators
+std::ostream&	operator<<(std::ostream& os, const AForm& f);
 
 #endif // AFORM_HPP

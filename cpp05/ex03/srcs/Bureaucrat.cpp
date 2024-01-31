@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:59:22 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/11/30 15:18:16 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/01/29 23:07:11 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,14 @@
 #include "AForm.hpp"
 
 // Constructors
-Bureaucrat::Bureaucrat(void) : _name("Ritupon Baishya"), _grade(150)
-{
-	if (_grade < Bureaucrat::maxGrade)
-		throw Bureaucrat::GradeTooHighException();
-	if (_grade > Bureaucrat::minGrade)
-		throw Bureaucrat::GradeTooLowException();
-}
+Bureaucrat::Bureaucrat(void) : _name("Ritupon Baishya"), _grade(minGrade)
+{ validateGrade(_grade); }
 Bureaucrat::Bureaucrat(const Bureaucrat& copy)
 	: _name(copy._name), _grade(copy._grade)
-{
-	if (_grade < Bureaucrat::maxGrade)
-		throw Bureaucrat::GradeTooHighException();
-	if (_grade > Bureaucrat::minGrade)
-		throw Bureaucrat::GradeTooLowException();
-}
+{ validateGrade(_grade); }
 Bureaucrat::Bureaucrat(const std::string& name, int grade)
 	: _name(name), _grade(grade)
-{
-	if (_grade < Bureaucrat::maxGrade)
-		throw Bureaucrat::GradeTooHighException();
-	if (_grade > Bureaucrat::minGrade)
-		throw Bureaucrat::GradeTooLowException();
-}
+{ validateGrade(_grade); }
 
 // Destructors
 Bureaucrat::~Bureaucrat(void) {}
@@ -47,55 +32,57 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& copy)
 	if (this == &copy)
 		return (*this);
 	_grade = copy._grade;
-	// _name = copy._name; // name is const, there are ways to change it still with const_cast but should I? People online saying it's UB and very bad depending on certain compiler optimizations
 	return (*this);
 }
 
 // Getters / Setters
 int	Bureaucrat::getGrade(void) const
-{
-	return (_grade);
-}
+{ return (_grade); }
 std::string	Bureaucrat::getName(void) const
-{
-	return (_name);
-}
+{ return (_name); }
 
 // Utils
 void	Bureaucrat::incrementGrade(void)
 {
-	if (_grade - 1 < 1)
-		throw Bureaucrat::GradeTooHighException();
-	--(_grade);
+	validateGrade(_grade - 1);
+	--_grade;
 }
 void	Bureaucrat::decrementGrade(void)
 {
-	if (_grade + 1 > 150)
-		throw Bureaucrat::GradeTooLowException();
-	++(_grade);
+	validateGrade(_grade + 1);
+	++_grade;
+}
+void	Bureaucrat::validateGrade(const int g) const
+{
+	if (g < maxGrade)
+		throw GradeTooHighException();
+	if (g > minGrade)
+		throw GradeTooLowException();
 }
 void	Bureaucrat::signForm(AForm& f) const
 {
-	try
-	{
+	try {
 		f.beSigned(*this);
-	}
-	catch (std::exception& e)
-	{
-		std::cout << _name << " coudln't sign " << f.getName()
+	} catch (std::exception& e) {
+		std::cout << _name << " couldn't sign " << f.getName()
 			<< " because " << e.what() << std::endl;
+		return;
 	}
 	std::cout << _name << " signed " << f.getName() << std::endl;
 }
-void	Bureaucrat::executeForm(const AForm& form)
+void	Bureaucrat::executeForm(const AForm& f) const
 {
-	try {
-		form.execute(*this);
-		std::cout << this->getName() << " executed " << form.getName() << std::endl;
-	} catch (std::exception& e) {
-		std::cout << this->getName() << " couldn't execute " << form.getName()
-			<< " because " << e.what() << std::endl;
+	try
+	{
+		f.execute(*this);
 	}
+	catch (const std::exception& e)
+	{
+		std::cout << _name << " failed to execute " << f.getName()
+			<< " because " << e.what() << std::endl;
+		return;
+	}
+	std::cout << _name << " executed " << f.getName() << std::endl;
 }
 
 // Exceptions

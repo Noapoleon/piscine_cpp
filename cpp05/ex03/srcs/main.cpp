@@ -19,26 +19,24 @@ void	show_err(const std::exception& e)
 }
 
 template <typename T>
-void	try_form(T form, int b_grade)
+void	try_form(T& form)
 {
-	if (b_grade == -1)
-	{
-		try {
-			Bureaucrat	b("Miguel", 1);
+	Bureaucrat	jon("Jon", Bureaucrat::maxGrade);
+	Bureaucrat	bob("Bob", Bureaucrat::minGrade);
 
-			b.executeForm(form);
-		} catch (std::exception& e) {
-			show_err(e);
-		}
-		return ;
-	}
+	std::cout << "\e[44mwhy is it changed??\e[0m " << form.getTarget() << std::endl;
+	std::cout << "Jon (max grade):" << std::endl;
 	try {
-		Bureaucrat	b("Miguel", b_grade);
-
-		b.signForm(form);
-		b.executeForm(form);
-		form.execute(b);
-	} catch (std::exception& e) {
+		jon.signForm(form);
+		jon.executeForm(form);
+	} catch (const std::exception& e) {
+		show_err(e);
+	}
+	std::cout << "Bob (min grade):" << std::endl;
+	try {
+		bob.signForm(form);
+		bob.executeForm(form);
+	} catch (const std::exception& e) {
 		show_err(e);
 	}
 }
@@ -54,15 +52,15 @@ int	main(void)
 		AForm		*form;
 
 		form = someRandomIntern.makeForm("robotomy request", "Bender");
-		try_form(*(static_cast<RobotomyRequestForm*>(form)), 1);
+		try_form(*(static_cast<RobotomyRequestForm*>(form)));
 		delete form;
 
 		form = someRandomIntern.makeForm("presidential pardon", "Bender");
-		try_form(*(static_cast<PresidentialPardonForm*>(form)), 1);
+		try_form(*(static_cast<PresidentialPardonForm*>(form)));
 		delete form;
 
 		form = someRandomIntern.makeForm("shrubbery creation", "Bender");
-		try_form(*(static_cast<ShrubberyCreationForm*>(form)), 1);
+		try_form(*(static_cast<ShrubberyCreationForm*>(form)));
 		delete form;
 	} catch (const std::exception& e) {
 		show_err(e);
