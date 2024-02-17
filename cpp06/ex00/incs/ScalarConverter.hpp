@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:57:10 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/17 16:24:58 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 13:26:34 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef enum e_scalarType
 	SC_CHAR,
 	SC_INT,
 	SC_FLOAT,
-	// IMPORTANT: Display overflows
 	SC_DOUBLE,
 	SC_INVALID
 } t_scalarType;
@@ -36,21 +35,18 @@ typedef struct s_scalar
 {
 	t_scalarType		type;
 	char				c;
-	// IMPORTANT: Display overflows
 	int					i;
 	float				f;
-	// IMPORTANT: Display overflows
 	double				d;
 	bool				possible[4];
 } t_scalar;
 typedef void (*convFun)(t_scalar&, const std::string&);
 
-	// IMPORTANT: Display overflows
 class ScalarConverter
 {
 public:
 	// Utils
-	static void	convert(const std::string& format); // IMPORTANT: Display overflows
+	static void	convert(const std::string& format);
 private:
 	// Constructor
 	ScalarConverter(void);
