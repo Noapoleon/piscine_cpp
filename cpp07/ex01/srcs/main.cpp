@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 08:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/13 17:57:15 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:31:33 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	plusTwo(T& x)
 {
 	x += 2;
 }
-void	timesTwo(int& x)
+template < typename T >
+void	timesTwo(T& x)
 {
 	x *= 2;
 }
@@ -56,12 +57,12 @@ int main( void )
 	std::string	arr2[6] = {"bonjour", "coucou", "salut", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "la-la la"};
 	float		arr3[3] = {42.0f, 69.0f, 1337.0f};
 
-	// int tests
+	// int tests (instantiation of function template)
 	test(arr1, 5, plusTwo<int>);
 	test(arr1, 5, plusTwo<int>);
-	test(arr1, 5, timesTwo);
+	test(arr1, 5, timesTwo<int>);
 
-	// string tests
+	// string tests (normal function)
 	test(arr2, 6, rot13);
 	test(arr2, 6, rot13);
 
@@ -76,7 +77,6 @@ int main( void )
 	test(arr3, 3, plusTwo<float>);
 
 	// other
-	test(arr1, 5, timesTwo);
 	test(arr2, 6, rot13);
 	return (0);
 }
