@@ -38,7 +38,7 @@ Array<T>&	Array<T>::operator=(const Array<T>& copy)
 		delete[] _arr;
 	_arr = new T[copySize];
 	for (unsigned int i = 0; i < copySize; ++i)
-		_arr[i] = copy[i]; // implement [] operator later
+		_arr[i] = copy[i];
 	_size = copySize;
 	return (*this);
 }
