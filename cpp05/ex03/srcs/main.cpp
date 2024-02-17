@@ -24,7 +24,6 @@ void	try_form(T& form)
 	Bureaucrat	jon("Jon", Bureaucrat::maxGrade);
 	Bureaucrat	bob("Bob", Bureaucrat::minGrade);
 
-	std::cout << "\e[44mwhy is it changed??\e[0m " << form.getTarget() << std::endl;
 	std::cout << "Jon (max grade):" << std::endl;
 	try {
 		jon.signForm(form);
@@ -51,17 +50,23 @@ int	main(void)
 		Intern		someRandomIntern;
 		AForm		*form;
 
+		std::cout << "\e[32;7;1mRobotomy test:\e[0m" << std::endl;
 		form = someRandomIntern.makeForm("robotomy request", "Bender");
 		try_form(*(static_cast<RobotomyRequestForm*>(form)));
 		delete form;
 
+		std::cout << "\n\e[32;7;1mPresidential test:\e[0m" << std::endl;
 		form = someRandomIntern.makeForm("presidential pardon", "Bender");
 		try_form(*(static_cast<PresidentialPardonForm*>(form)));
 		delete form;
 
+		std::cout << "\n\e[32;7;1mShrubbery test:\e[0m" << std::endl;
 		form = someRandomIntern.makeForm("shrubbery creation", "Bender");
 		try_form(*(static_cast<ShrubberyCreationForm*>(form)));
 		delete form;
+
+		std::cout << "\n\e[32;7;1mWrong test:\e[0m" << std::endl;
+		form = someRandomIntern.makeForm("wrong form", "Bender");
 	} catch (const std::exception& e) {
 		show_err(e);
 	}
