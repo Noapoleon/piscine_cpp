@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:15:10 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/18 08:45:10 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:01:20 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,19 @@ struct Data
 class Serializer
 {
 public:
+	// Destructors
+	~Serializer(void);
+
 	// Utils
 	static uintptr_t	serialize(Data* ptr);
 	static Data*		deserialize(uintptr_t raw);
 private:
+	// Constructors
 	Serializer(void);
+	Serializer(const Serializer& copy);
+
+	// Operators
+	Serializer& operator=(const Serializer& copy);
 };
 
 #endif // SERIALIZER_HPP

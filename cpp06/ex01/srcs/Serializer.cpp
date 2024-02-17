@@ -6,11 +6,14 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:16:05 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/18 08:47:29 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:08:20 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+
+// Destructors
+Serializer::~Serializer(void) {}
 
 uintptr_t	Serializer::serialize(Data *ptr)
 {
@@ -20,3 +23,11 @@ Data*	Serializer::deserialize(uintptr_t raw)
 {
 	return (reinterpret_cast<Data *>(raw));
 }
+
+// Constructors (private)
+Serializer::Serializer(void) {}
+Serializer::Serializer(const Serializer& copy) { (void)copy; }
+
+// Operators
+Serializer& Serializer::operator=(const Serializer& copy)
+{ (void)copy; return (*this); }

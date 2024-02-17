@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:56:38 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/02/17 13:56:49 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:08:01 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,7 @@ void	ScalarConverter::convert(const std::string& format)
 
 // Construtors (private)
 ScalarConverter::ScalarConverter(void) {}
-ScalarConverter::ScalarConverter(const ScalarConverter& copy)
-{ (void)copy; }
+ScalarConverter::ScalarConverter(const ScalarConverter& copy) { (void)copy; }
 
 // Operators (private)
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& copy)
