@@ -6,11 +6,14 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:56:38 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/02/17 13:30:59 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 13:56:49 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+// Destructors
+ScalarConverter::~ScalarConverter(void) {}
 
 static void	displayScalar(const t_scalar& sc)
 {
@@ -138,3 +141,12 @@ void	ScalarConverter::convert(const std::string& format)
 	}
 	displayScalar(scalar);
 }
+
+// Construtors (private)
+ScalarConverter::ScalarConverter(void) {}
+ScalarConverter::ScalarConverter(const ScalarConverter& copy)
+{ (void)copy; }
+
+// Operators (private)
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& copy)
+{ (void)copy; return (*this); }

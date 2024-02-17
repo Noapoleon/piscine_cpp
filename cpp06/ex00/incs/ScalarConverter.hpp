@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:57:10 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/02/17 13:26:34 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 13:56:40 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,18 @@ typedef void (*convFun)(t_scalar&, const std::string&);
 class ScalarConverter
 {
 public:
+	// Destructors
+	~ScalarConverter(void);
+
 	// Utils
 	static void	convert(const std::string& format);
 private:
 	// Constructor
 	ScalarConverter(void);
+	ScalarConverter(const ScalarConverter& copy);
+
+	// Operators
+	ScalarConverter& operator=(const ScalarConverter& copy);
 };
 
 #endif // SCALAR_CONVERTER_HPP
