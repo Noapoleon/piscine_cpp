@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 08:50:01 by nlegrand          #+#    #+#             */
-/*   Updated: 2023/12/21 03:41:19 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:28:33 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,17 @@ void	identify(Base* p)
 void	identify(Base& p)
 {
 	try {
-		dynamic_cast<A&>(p);
+		(void)dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
 		return;
 	} catch (const std::exception& e) {}
 	try {
-		dynamic_cast<B&>(p);
+		(void)dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
 		return;
 	} catch (const std::exception& e) {}
 	try {
-		dynamic_cast<C&>(p);
+		(void)dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 		return;
 	} catch (const std::exception& e) {}
@@ -101,23 +101,23 @@ void	identify(Base& p)
 
 int	main(void)
 {
-	Base *tmp[15];
+	Base *tmp[10];
 
 	srand(time(NULL));
 	// generate
-	for (int i = 0; i < 15; ++i)
+	for (int i = 0; i < 10; ++i)
 		tmp[i] = generate();
 
-	// identify 1
-	for (int i = 0; i < 15; ++i)
+	// identify pointer
+	for (int i = 0; i < 10; ++i)
 		identify(tmp[i]);
 	std::cout << std::endl;
-	// identify 2
-	for (int i = 0; i < 15; ++i)
+	// identify reference
+	for (int i = 0; i < 10; ++i)
 		identify(*(tmp[i]));
 
 	// delete
-	for (int i = 0; i < 15; ++i)
+	for (int i = 0; i < 10; ++i)
 		delete tmp[i];
 	return (0);
 }
