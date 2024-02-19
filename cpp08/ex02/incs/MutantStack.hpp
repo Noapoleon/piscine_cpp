@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 13:56:14 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/02/14 17:21:10 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:26:53 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define MUTANT_STACK_HPP
 
 #include <stack>
+#include <iterator>
 
 template< typename T>
 class MutantStack : public std::stack<T>
@@ -27,12 +28,12 @@ public:
 	// Iterators
 	iterator	begin(void) { return (this->c.begin()); }
 	iterator	end(void) { return (this->c.end()); }
-	const_iterator	cbegin(void) { return (this->c.cbegin()); }
-	const_iterator	cend(void) { return (this->c.cend()); }
+	const_iterator	cbegin(void) const { return (this->c.begin()); }
+	const_iterator	cend(void) const { return (this->c.end()); }
 	reverse_iterator	rbegin(void) { return (this->c.rbegin()); }
 	reverse_iterator	rend(void) { return (this->c.rend()); }
-	const_reverse_iterator	crbegin(void) { return (this->c.crbegin()); }
-	const_reverse_iterator	crend(void) { return (this->c.crend()); }
+	const_reverse_iterator	crbegin(void) const { return (this->c.rbegin()); }
+	const_reverse_iterator	crend(void) const { return (this->c.rend()); }
 };
 
 #endif // MUTANT_STACK_HPP
