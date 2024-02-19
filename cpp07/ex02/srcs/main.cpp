@@ -6,7 +6,7 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:19:50 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/16 00:37:15 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:50:00 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@
 //	return (0);
 //}
 
-// SUBJECT MAIN FOR TESTS
+#include "Array.hpp"
 #include <iostream>
 #include <cstdlib>
-#include <Array.hpp>
 
 #define MAX_VAL 750
 int main(int, char**)

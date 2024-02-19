@@ -6,13 +6,16 @@
 /*   By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:50:55 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/01/16 00:01:44 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:49:26 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
+
+#include <cstdlib>
+#include <stdexcept>
 
 template < typename T >
 class Array
