@@ -6,7 +6,7 @@
 #    By: nlegrand <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 18:42:40 by nlegrand          #+#    #+#              #
-#    Updated: 2024/02/18 17:10:11 by nlegrand         ###   ########.fr        #
+#    Updated: 2024/02/21 01:36:50 by nlegrand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ CINCS	=	-I./$(INCDIR)
 RM	=	rm -rf
 
 # Files
-SRCS	:=	main.cpp
+SRCS	:=	main.cpp \
+			RPN.cpp
 OBJS	:=	$(SRCS:.cpp=.o)
 SRCS	:=	$(addprefix $(SRCDIR)/, $(SRCS))
 OBJS	:=	$(addprefix $(OBJDIR)/, $(OBJS))

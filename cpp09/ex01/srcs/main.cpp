@@ -6,22 +6,12 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 17:09:32 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/02/18 17:36:07 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/21 01:40:39 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <stack>
-#include <stdexcept>
-
-int	rpn(const std::string& format)
-{
-	//long			res = 0;
-	//std::stack<
-	std::cout << format << std::endl;
-	for 
-	return (0);
-}
+#include "RPN.hpp"
 
 int	main(int ac, char **av)
 {
@@ -35,9 +25,9 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	try {
-		rpn(av[1]);
+		std::cout << RPN::rpn(av[1]) << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	return (rpn(av[1]));
+	return (0);
 }
