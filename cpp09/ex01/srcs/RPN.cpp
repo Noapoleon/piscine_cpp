@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 01:32:35 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/02/21 01:43:47 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/02/21 02:05:23 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ int	RPN::rpn(const std::string format)
 {
 	std::stack<long>	ops;
 
-	for (std::string::const_iterator it = format.begin(); it != format.end(); ++it)
+	for (size_t i = 0; format[i]; ++i)
 	{
-		if (isdigit(*it))
-			ops.push(*it - '0');
-		else if (isOperator(*it))
+		if (isdigit(format[i]))
+			ops.push(format[i] - '0');
+		else if (isOperator(format[i]))
 		{
 			if (ops.size() < 2)
 				throw std::runtime_error("Missing operand");
-			handleOperator(*it, ops);
+			handleOperator(format[i], ops);
 		}
-		else if (*it != ' ')
+		else if (format[i] != ' ')
 			throw std::runtime_error("Unknown operator or operand");
 	}
 	if (ops.size() > 1)
