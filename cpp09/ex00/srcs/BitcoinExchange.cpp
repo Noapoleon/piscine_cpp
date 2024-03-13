@@ -88,7 +88,7 @@ std::pair<std::string, double>	parseLine(const std::string& str, char sepChar)
 
 	// check for separator
 	if (sep == std::string::npos)
-		throw std::runtime_error("No separator");
+		throw std::runtime_error("Bad input `" + str + "'");
 
 	// get date part
 	sub = str.substr(0, sep);
@@ -113,35 +113,14 @@ std::pair<std::string, double>	parseLine(const std::string& str, char sepChar)
 	return (tmp);
 }
 
-static void	parseFile(const std::string& fileName, std::map<std::string, double>& map, char sep)
-{
-	std::ifstream			file(fileName.c_str());
-	std::string				line;
-
-	// open file
-	if (!isRegularFile(fileName))
-		throw std::runtime_error("Data file missing or not a regular file");
-	if (!file.is_open())
-		throw std::runtime_error("Data file failed to open");
-
-	// only include first line if it follows format, otherwise skip it
-	std::getline(file, line); // ignore first line, protect later
-	
-	// parse all lines
-	while (std::getline(file, line))
-		map.insert(parseLine(line, sep));
-	while (std::getline(file, line))
-	{
-		try {
-			map.insert(parseLine(line, sep));
-		} catch (const std::exception& e) {
-			std::cerr << "Error: " << e.what() << std::endl;
-		}
-	}
-	file.close();
-}
-
-static void	convertInput(const std::string& fileName, std::map<std::string, double>& data, char sep)
+// Goes through each line of the file, CSV format assumed
+// if convert flag is false: populates data map
+// if convert flag is true: converts the value instead using data map
+static void	parseAndConvert(
+	const std::string& fileName,
+	std::map<std::string, double>& data,
+	char sep,
+	bool convert)
 {
 	std::ifstream									file(fileName.c_str());
 	std::string										line;
@@ -153,27 +132,25 @@ static void	convertInput(const std::string& fileName, std::map<std::string, doub
 		throw std::runtime_error("Data file missing or not a regular file");
 	if (!file.is_open())
 		throw std::runtime_error("Data file failed to open");
+	// skip first line
+	std::getline(file, line);
 
-	// only include first line if it follows format, otherwise skip it
-	std::getline(file, line); // ignore first line, protect later
-	
 	// parse all lines
 	while (std::getline(file, line))
 	{
+		if (!convert)
+		{
+			data.insert(parseLine(line, sep));
+			continue;
+		}
 		try {
 			tmp = parseLine(line, sep);
-			it = data.lower_bound(tmp.first);
-			if (it != data.end())
-			{
-				if (it->first != tmp.first)
-					--it;
-				std::cout << tmp.first << " => " << tmp.second << " = " << tmp.second * it->second << std::endl;
-			}
-			else
+			if (tmp.first < data.begin()->first)
 				throw std::runtime_error("No match in data");
-			// find latest matching date:
-			// -
-			// - check if can go back one date
+			it = data.lower_bound(tmp.first);
+			if (it == data.end() || it->first != tmp.first)
+				--it;
+			std::cout << tmp.first << " => " << tmp.second << " = " << tmp.second * it->second << std::endl;
 		} catch (const std::exception& e) {
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
@@ -186,8 +163,10 @@ void	BitcoinExchange::btc(const std::string dataName, const std::string inputNam
 {
 	std::map<std::string, double>	data;
 
-	parseFile(dataName, data, ',');
-	convertInput(inputName, data, '|'); // change this a bit because error messages need to be dynamic for input file only
+	parseAndConvert(dataName, data, ',', false);
+	if (data.size() == 0)
+		throw std::runtime_error("No entries in data");
+	parseAndConvert(inputName, data, '|', true);
 }
 
 // Constructors (private)
