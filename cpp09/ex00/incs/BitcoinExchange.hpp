@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:52:23 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/02/21 18:31:24 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/03/14 22:50:14 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ public:
 	~BitcoinExchange(void);
 
 	// Utils
-	//static void	btc(std::string data, std::string input);
 	static void	btc(const std::string dataName, const std::string inputName);
 private:
 	// Constructors (private)

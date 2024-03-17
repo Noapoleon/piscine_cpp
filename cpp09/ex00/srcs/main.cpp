@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@stud.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:25:25 by noa               #+#    #+#             */
-/*   Updated: 2024/03/06 17:49:43 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/03/17 19:45:16 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int ac, char **av)
 		BitcoinExchange::btc("data.csv", av[1]);
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
+		return (1);
 	}
 	return (0);
 }
