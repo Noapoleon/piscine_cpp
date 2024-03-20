@@ -6,7 +6,7 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 22:45:04 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/03/17 20:26:19 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/03/20 01:17:05 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@
 #include <stdexcept>
 #include <sstream>
 
-// Containers
-#include <list> // remove later, testing
-
+//template< typename T >
 class PmergeMe
 {
 public:
@@ -28,7 +26,8 @@ public:
 	~PmergeMe(void);
 
 	// Utils
-	static void	sort(std::string str);
+	template<typename T>
+	static void	sort(std::string str, T& container);
 private:
 	// Constructors (private)
 	PmergeMe(void);
@@ -37,6 +36,8 @@ private:
 	// Operators (private)
 	PmergeMe& operator=(const PmergeMe& copy);
 };
+
+#include "PmergeMe.tpp"
 
 #endif // PMERGE_ME_HPP
 

@@ -6,13 +6,15 @@
 /*   By: nlegrand <nlegrand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:59:54 by nlegrand          #+#    #+#             */
-/*   Updated: 2024/03/17 19:42:50 by nlegrand         ###   ########.fr       */
+/*   Updated: 2024/03/20 01:21:09 by nlegrand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <vector>
+#include <deque>
 #include "PmergeMe.hpp"
 
 static bool	checkSettings(int ac, char** av)
@@ -29,12 +31,35 @@ static bool	checkSettings(int ac, char** av)
 	return (true);
 }
 
+template<typename T>
+static void	show(T container)
+{
+	for (typename T::size_type i = 0; i < container.size(); ++i)
+		std::cout << container[i] << " ";
+}
+
 int	main(int ac, char** av)
 {
+	//time_t time1, time2;
+	std::vector<unsigned int>	c1;
+	std::deque<unsigned int>	c2;
+
 	if (!checkSettings(ac, av))
 		return (1);
 	try {
-		PmergeMe::sort(av[1]);
+		// time 1
+		PmergeMe::sort(av[1], c1);
+		// time 2
+
+		//// time 1
+		PmergeMe::sort(av[1], c2);
+		//// time 2
+		
+
+		std::cout << "Before:\t" << av[1] << std::endl;
+		std::cout << "After:\t";
+		show(c1);
+		std::cout << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 		return (1);
